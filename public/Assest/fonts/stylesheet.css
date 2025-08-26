@@ -1,0 +1,36 @@
+@font-face {
+    font-family: 'Cavolini';
+    src: url('Cavolini.woff2') format('woff2'),
+        url('Cavolini.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cavolini';
+    src: url('Cavolini-BoldItalic.woff2') format('woff2'),
+        url('Cavolini-BoldItalic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cavolini';
+    src: url('Cavolini-Italic.woff2') format('woff2'),
+        url('Cavolini-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Cavolini';
+    src: url('Cavolini-Bold.woff2') format('woff2'),
+        url('Cavolini-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+

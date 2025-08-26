@@ -1,0 +1,4 @@
+No,Name,SKU,Sale_Price,Purchase_Price,Brand,Tax,Discount,Category,Unit,Quantity,Stock_Limit,Type
+1,PC,SKU-C8LD455,1000,500,DEMO Brand,GST,Product Discount,electronics,pieces,5,5,parts,
+2,LapTop,SKU-F8LD455,10000,8000,Brand,SGST,Product Discount,electronics,pieces,2,5,parts,
+3,LCD,SKU-G8LD455,5000,3000,Brand,CGST,Product Discount,electronics,pieces,5,5,parts,

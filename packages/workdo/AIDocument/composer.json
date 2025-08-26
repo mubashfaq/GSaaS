@@ -1,0 +1,27 @@
+{
+    "name": "workdo/aidocument",
+    "description": "Description for aidocument package",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "orhanerday/open-ai": "4.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Workdo\\AIDocument\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkDo",
+            "email": "support@workdo.io"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workdo\\AIDocument\\Providers\\AIDocumentServiceProvider"
+            ]
+        }
+    }
+}

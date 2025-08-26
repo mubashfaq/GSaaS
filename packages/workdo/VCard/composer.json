@@ -1,0 +1,27 @@
+{
+    "name": "workdo/vcard",
+    "description": "Description for vcard package",
+    "type": "library",
+    "license": "MIT",
+    "require": {
+        "jeroendesloovere/vcard": "^1.7"
+    },
+    "autoload": {
+        "psr-4": {
+            "Workdo\\VCard\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkDo",
+            "email": "support@workdo.io"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workdo\\VCard\\Providers\\VCardServiceProvider"
+            ]
+        }
+    }
+}

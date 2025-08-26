@@ -1,0 +1,212 @@
+body.theme-1 {
+    --theme-color: #0CAF60 !important;
+    --light-color: #ceefdf !important;
+}
+
+body.theme-2 {
+    --theme-color: #584ED2 !important;
+    --light-color: #dedcf6 !important;
+}
+
+body.theme-3 {
+    --theme-color: #6FD943 !important;
+    --light-color: #e2f7d9 !important;
+}
+
+body.theme-4 {
+    --theme-color: #145388 !important;
+    --light-color: #d0dde7 !important;
+}
+
+body.theme-5 {
+    --theme-color: #B9406B !important;
+    --light-color: #f1d9e1 !important;
+}
+
+body.theme-6 {
+    --theme-color: #008ECC !important;
+    --light-color: #cce8f5 !important;
+}
+
+body.theme-7 {
+    --theme-color: #922C88 !important;
+    --light-color: #e9d5e7 !important;
+}
+
+body.theme-8 {
+    --theme-color: #C0A145 !important;
+    --light-color: #f2ecda !important;
+}
+
+body.theme-9 {
+    --theme-color: #48494B !important;
+    --light-color: #dadbdb !important;
+}
+
+body.theme-10 {
+    --theme-color: #0C7785 !important;
+    --light-color: #cee4e7 !important;
+}
+
+body.custom-color {
+    --theme-color: var(--color-customColor) !important;
+    --light-color: #fff !important;
+}
+
+.price {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: flex-end;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+  }
+.price ins {
+    font-weight: 700;
+    font-size: 18px;
+    -webkit-box-align: end;
+    -ms-flex-align: end;
+    align-items: end;
+    line-height: 100%;
+  }
+
+  .price del {
+    font-weight: 600;
+    margin-left: 0px;
+    line-height: 100%;
+    opacity: 0.6;
+    text-decoration: line-through;
+  }
+
+
+.menu-image {
+    width:120px;
+    height:120px;
+    margin:0 auto 30px;
+    background-color:#ffffff ;
+    border-radius:50%;
+    overflow: hidden;
+    padding:7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding:20px;
+}
+.menu-image img{
+    width:100%;
+    height:100%;
+}
+.qr-image {
+    max-width: 158px;
+    width: 100%;
+    margin: 0 auto;
+    background-color: #ffffff;
+    padding: 5px;
+}
+.qr-card-wrp-wrp,
+.qr-card-wrp .card-body{
+    z-index:1;
+    position: relative;
+}
+.qr-card-wrp {
+    max-width:405px;
+    width:100%;
+    margin:auto;
+    box-shadow:none;
+}
+
+.qr-card-bg{
+    position:absolute;
+    top:0;
+    left:0;
+    right:0;
+    width:100%;
+    height:100%;
+    z-index:-3;
+}
+.qr-card-bg img{
+    width:100%;
+    opacity:0.07;
+}
+.qr-card-wrp .card-body::before,
+.qr-card-wrp .card-body::after{
+    content:'';
+    position:absolute;
+    bottom:0;
+    left:0;
+    right:0;
+    width:100%;
+    border-radius:50% 50% 0 0 ;
+}
+.qr-card-wrp .card-body::before{
+    height:64%;
+    background-color:var(--theme-color);
+    z-index:-1;
+}
+.qr-card-wrp .card-body::after{
+    height:68%;
+    z-index: -2;
+    opacity:0.3;
+    background-color:var(--theme-color);
+}
+.card.qr-card-wrp .card-body h2{
+font-size: 24px !important;
+background: var(--theme-color);
+color: #ffffff;
+width: max-content;
+margin: 0 auto;
+padding: 8px 30px;
+border-radius: 0 0 15px 15px;
+}
+.product-content-bottom .price-wrp {
+    flex-direction:column;
+    gap:15px;
+}
+.product-content-bottom .price-wrp .price{
+    gap:7px;
+}
+
+.category-sec .product-card .product-content-bottom .price del{
+    font-size:16px;
+}
+.category-sec .product-content-bottom .price .discount-label{
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 1;
+    color: #ff5f5f;
+}
+@media screen and (min-width:1200px){
+
+    .category-sec .product-card .product-content-bottom .price ins{
+        font-size:22px;
+    }
+}
+@media screen and (min-width:1199px){
+    .category-sec .product-card .product-content-bottom .price del{
+        font-size:14px;
+    }
+}
+@media screen and (max-width:575px){
+    .qr-card-wrp .card-body::before, .qr-card-wrp .card-body::after{
+        border-radius:230px 230px 0 0;
+    }
+    .menu-image svg {
+        width: 60px;
+        height: 60px;
+    }
+    .menu-image {
+        width: 100px;
+        height: 100px;
+    }
+    .qr-card-wrp .card-body::after {
+        height: 75%;
+    }
+    .qr-card-wrp .card-body::before {
+        height: 71%;
+    }
+    .card.qr-card-wrp .card-body h2{
+        font-size:18px !important;
+    }
+}

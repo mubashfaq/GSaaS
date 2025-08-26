@@ -1,0 +1,26 @@
+.alert-notify {
+    display: flex !important;
+    max-width: 400px;
+    width: auto;
+    padding: 15px 45px 15px 15px;
+    box-shadow: 0 1rem 3rem rgba(31, 45, 61, 0.125);
+    border-radius: 10px;
+}
+.alert-notify .close {
+    top: 50% !important;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 0;
+    font-size: 20px;
+}
+.alert-notify.alert-success {
+    color: #155724;
+    background-color: #D4EDDA;
+    border-color: #C3E6CB;
+}
+.alert-notify.alert-danger {
+    color: #721C24;
+    background-color: #F8D7DA;
+    border-color: #F5C6CB;
+}
+

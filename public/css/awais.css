@@ -1,0 +1,1225 @@
+@font-face {
+  font-family: 'CustomFont';
+  /* Name of your font */
+  src: url('../fonts//Cavolini-Bold.woff') format('woff'),
+    url('../fonts/Cavolini-Bold.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.navbar {
+  position: absolute !important;
+  width: 100%;
+  z-index: 10;
+  padding-top: 40px !important;
+}
+
+.nav-item .nav-link {
+  font-weight: 500;
+}
+
+.hero-section {
+  position: relative;
+  overflow: hidden;
+  background-image: url('../public/Assest/images/Vector.png');
+  background-size: cover;
+  background-position: bottom;
+  height: 990px;
+}
+
+.lead {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.hero-section-btn {
+  background: linear-gradient(90deg, #023850 0%, #0380B6 100%) !important;
+  border: none !important;
+  border-radius: 10px !important;
+  font-family: "Inter", sans-serif;
+  font-weight: 500 !important;
+  font-size: 16px;
+  padding: 11px 45px !important;
+  text-decoration: none;
+}
+
+.hero-section-btn-two {
+  border: none !important;
+  border-radius: 10px !important;
+  font-family: "Inter", sans-serif;
+  font-weight: 500 !important;
+  font-size: 16px;
+  padding: 11px 35px !important;
+  text-decoration: none;
+}
+
+.dashboardimg-section {
+  margin-top: -430px;
+  margin-bottom: 100px;
+}
+
+.work-broken-section {
+  background: #F9F9F9;
+  padding: 80px 0px;
+  margin-top: 80px;
+  box-shadow: 0px -1px 10px #B8B8B840;
+}
+
+.fix-it-box {
+  background-image: url('../images/fix-it-bg.png');
+  background-size: cover;
+  background-position: center;
+  padding: 40px 60px;
+  border-radius: 10px;
+}
+
+.fix-it-box h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 48px;
+  color: white;
+}
+
+.fix-it-box p {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: white;
+}
+
+.fix-it-box a {
+  background: linear-gradient(90deg, #023850 0%, #0380B6 100%) !important;
+  border: 1px solid white;
+  border-radius: 4px;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  color: white;
+  text-decoration: none;
+  padding: 11px 45px;
+}
+
+.fix-it-box a:hover {
+  color: white;
+}
+
+.solving-bubble {
+  top: -35px;
+  right: -155px;
+}
+
+.benefit-section {
+  background: #F9F9F9;
+  box-shadow: 0px -1px 10px #B8B8B840;
+}
+
+.benefits-cards {
+  background-color: white;
+  border-radius: 24px;
+  padding: 30px 20px;
+  height: 170px;
+}
+
+.benefits-bubble {
+  top: -7px;
+  right: -95px;
+}
+
+.faqs-heading {
+  font-size: 30px !important;
+  font-weight: 700;
+}
+
+.leading-heading {
+  font-size: 40px;
+  font-family: "Inter", sans-serif;
+  font-weight: 600 !important;
+}
+
+.leading-company-logo {
+  width: 225px !important;
+}
+
+.clients-logos {
+  gap: 40px 10px;
+  padding-bottom: 50px;
+  border-bottom: 1px solid #14202E66;
+}
+
+.benefits-cards-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 700;
+  font-size: 24px;
+}
+
+.benefits-cards-text {
+  font-family: "Inter", sans-serif;
+}
+
+/* Navbar */
+.navbar-nav {
+  gap: 20px !important;
+}
+
+.login a {
+  border-radius: 10px;
+  width: 116px;
+}
+
+.mini-heading {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* frist-section */
+.main-titl>h1 {
+  font-size: 48px;
+}
+
+/* fourth-section */
+.work-broken {
+  text-align: end;
+}
+
+.border-work {
+  border: 2px solid black;
+  padding: 20px !important;
+  border-radius: 4px;
+  border-width: 2px;
+}
+
+/* problem-section */
+.problem-main-img {
+  position: absolute;
+  left: 90%;
+  top: -90px;
+}
+
+.features-main-img {
+  position: absolute;
+  right: 30px;
+  top: -90px;
+  width: 150px;
+  height: 150px;
+}
+
+.border-work>h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 52px;
+  letter-spacing: -2.5%;
+  text-align: center;
+}
+
+.border-work>p {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 24px;
+  letter-spacing: -2.5%;
+  text-align: center;
+  color: #108AEA;
+  margin: 0px !important;
+}
+
+.work {
+  padding: 10px;
+
+}
+
+.industry-card {
+  width: 116px;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.industry-titl {
+  text-align: initial;
+  font-size: 16px;
+}
+
+.whygsaas {
+  background-color: rgba(240, 248, 255, 0.884);
+}
+
+.right-col {
+  padding-right: 20px;
+}
+
+.sec-heading h2 {
+  font-size: 40px;
+}
+
+/* Now use the custom font */
+.font {
+  font-family: 'CustomFont', sans-serif;
+  /* Apply your font to body */
+}
+
+input::placeholder {
+  color: white !important;
+}
+
+.random-column {
+  width: 166px !important;
+  height: 156px !important;
+  border: 1px solid #CCCCCC;
+  box-shadow: 0px 8px 4px #E4E4E426;
+  padding: 20px !important;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.random-column-2 {
+  width: 260px !important;
+  height: 250px !important;
+  border: 1px solid #CCCCCC;
+  box-shadow: 0px 8px 4px #E4E4E426;
+  padding: 20px !important;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(0deg, #FFFFFF 0%, #F3FCFF 100%) !important;
+}
+
+.random-column:hover {
+  border: 1px solid #108AEA;
+  box-shadow: 0px 8px 24px #14C4F633;
+}
+
+.random-column-2:hover {
+  border: 1px solid #108AEA;
+  box-shadow: 0px 8px 24px #14C4F633;
+}
+
+.random-column p {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.random-column img {
+  width: 48px;
+}
+
+/* problem-solving */
+.pm-card {
+  overflow: hidden;
+}
+
+.pm-img {
+  position: relative;
+  top: 20px;
+}
+
+/* industry */
+.industry-title {
+  font-size: 48px;
+  font-weight: 600;
+}
+
+.kaushan-script-regular {
+  font-family: "Kaushan Script", cursive;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 19px;
+
+}
+
+.bars {
+  position: relative !important;
+  top: 10px;
+}
+
+.bars li {
+  background-color: black !important;
+}
+
+.kaushan {
+  font-family: "Antonio", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 44px;
+  color: white;
+}
+
+.big-card {
+  position: relative;
+  bottom: 100px;
+}
+
+footer {
+  padding: 50px 0px 30px !important;
+  background-image: url('../images/footer-bg.png');
+  background-size: cover;
+  background-position: center;
+}
+
+.worksec-img {
+  position: relative;
+  right: 140px;
+}
+
+.feat {
+  width: 150px;
+  height: 150px;
+  border-radius: 10px;
+  background-color: white;
+}
+
+.feat img {
+  width: 50px;
+  height: 50px;
+
+}
+
+.footer-btn {
+  background-color: white;
+  padding: 11px 30px;
+  border: none;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 16px;
+  font-weight: 500;
+}
+
+.footer-btn-2 {
+  padding: 11px 20px;
+  border: 2px solid white;
+  border-radius: 10px;
+  font-family: "Inter", sans-serif;
+  font-weight: 16px;
+  font-weight: 500;
+  color: white;
+  background-color: transparent;
+}
+
+.mr {
+  margin-right: 10%;
+}
+
+.heading-problem-solve {
+  right: 90PX;
+}
+
+.bg-light {
+  box-shadow: 0px -9px 14px 0px #00000033;
+  background-color: aliceblue;
+  box-shadow: 0px 4px 6px 0px #0000004D;
+
+}
+
+.company-links {
+  padding-left: 160px !important;
+}
+
+.company-links h6 {
+  color: white;
+}
+
+.company-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.company-links ul li a {
+  color: #EAEAEA;
+  text-decoration: none;
+}
+
+.product-links {
+  padding-left: 100px !important;
+}
+
+.product-links h6 {
+  color: white;
+}
+
+.product-links ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.product-links ul li a {
+  color: #EAEAEA;
+  text-decoration: none;
+}
+
+.newsletter h6 {
+  color: #EAEAEA;
+}
+
+.footer-main-section {
+  border-bottom: 1px solid #EAEAEA;
+  padding: 30px 0px 50px;
+  margin-bottom: 20px;
+}
+
+.our-plans {
+  position: relative;
+  right: 150px;
+}
+
+.main-image {
+  background: transparent !important;
+}
+
+.big {
+  border-radius: 10px;
+}
+
+.bg-industry-section {
+  background: linear-gradient(#eff8ffe6, rgba(239, 248, 255, 0.9)),
+    url('/Assest/') center/cover no-repeat;
+}
+
+.foot-logo {
+  width: 200px;
+}
+
+.footer-first-section {
+  margin-bottom: 50px;
+  padding-bottom: 30px;
+  border-bottom: 1px solid #FFFFFF;
+}
+
+.accordion-container {
+  width: 100%;
+  background-color: #fff;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.accordion-item {
+  border: none !important;
+  border-bottom: 1px solid #e0e0e0 !important;
+}
+
+.accordion-item:first-of-type {
+  border-top-left-radius: .50rem !important;
+  border-top-right-radius: .50rem !important;
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  cursor: pointer;
+  background-color: #fff;
+  transition: background-color 0.3s;
+}
+
+.accordion-header:hover {
+  background-color: #f9f9f9;
+}
+
+.accordion-header {
+  border-top-left-radius: 0.50rem !important;
+  border-top-right-radius: .50rem !important;
+  border-bottom-left-radius: 0.50rem !important;
+  border-bottom-right-radius: .50rem !important;
+}
+
+.accordion-question {
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 500;
+  color: #333;
+}
+
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  padding: 0 20px;
+  transition: max-height 0.3s ease, padding 0.3s ease;
+}
+
+.accordion-content.active {
+  max-height: 200px;
+  padding: 0 20px 20px;
+}
+
+.accordion-answer {
+  color: #666;
+  line-height: 1.5;
+  font-size: 16px;
+}
+
+.content-creation-bg {
+  height: 650px;
+  background: url(../images/content-creation-bg.png), linear-gradient(to right, #F9F9F9 50%, #F9F9F9 50%);
+  background-repeat: no-repeat;
+  background-size: 42%, 100%;
+  background-position: right;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.content-creation-badge {
+  background-color: #14C4F6;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  color: white;
+  font-size: 14px;
+  padding: 5px 20px;
+}
+
+.content-creation-box {
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.content-creation-box h2 {
+  font-family: "Inter", sans-serif;
+  font-weight: 600;
+  font-size: 36px;
+  color: #000;
+  width: 410px;
+}
+
+.content-creation-box p {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #000;
+}
+
+.content-creation-box ul {
+  margin: 0px;
+  padding: 0px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.content-creation-box ul li {
+  list-style: none;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #000;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.contact-us-btn {
+  background: linear-gradient(90deg, #0070E2 0%, #108AEA 100%) !important;
+  border: none !important;
+  border-radius: 50px !important;
+  font-family: "Inter", sans-serif;
+  font-weight: 500 !important;
+  font-size: 16px;
+  color: white;
+  padding: 11px 35px !important;
+}
+
+.contact-us-btn-2 {
+  background-color: transparent;
+  border: 1px solid #000 !important;
+  border-radius: 50px !important;
+  font-family: "Inter", sans-serif;
+  font-weight: 500 !important;
+  font-size: 16px;
+  color: #000;
+  padding: 11px 35px !important;
+}
+
+.slider-container {
+  width: 100%;
+  height: 600px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.myslider-container {
+  width: 100%;
+  height: 430px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.myslide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+}
+
+.myslide.active {
+  opacity: 1;
+}
+
+.slide-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.dots-container {
+  position: absolute;
+  bottom: -40px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.dot {
+  width: 49px;
+  height: 5px;
+  border-radius: 3px;
+  background-color: #EDEBEB;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.dot.active {
+  background-color: #14202E9E;
+}
+
+.newslider-container {
+  width: 100%;
+  height: 420px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.newmyslide {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+  transition: opacity 0.5s ease-in-out;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #ddd;
+}
+
+.newmyslide.active {
+  opacity: 1;
+}
+
+.newslide-image {
+  width: 100%;
+  height: 470px;
+  object-fit: cover;
+}
+
+.newdots-container {
+  position: absolute;
+  bottom: -15px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  z-index: 10;
+}
+
+.newdot {
+  width: 49px;
+  height: 5px;
+  border-radius: 3px;
+  background-color: #EDEBEB;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.newdot.active {
+  background-color: #FFFFFF9E;
+}
+
+
+.slider {
+  position: relative;
+  overflow: hidden;
+}
+
+.slider__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  padding-inline: 1rem;
+  scroll-behavior: smooth;
+  list-style-type: none;
+  padding: 0;
+  margin-right: calc(0.8rem * -1);
+  gap: 15px;
+}
+
+.slider__buttons {
+  .slider__button {
+    border: none;
+    cursor: pointer;
+    background-color: transparent;
+
+    &[disabled] {
+      opacity: 0.5;
+    }
+  }
+}
+
+.slider__button--prev {
+  rotate: 180deg;
+}
+
+.slide {
+  width: 170px;
+  text-align: center;
+}
+
+.category-box {
+  width: 115px;
+  height: 115px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  border: 1px solid #eaeaea;
+  margin: auto;
+}
+
+.category-box-title {
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  color: #000;
+}
+
+.slider__track::-webkit-scrollbar {
+  display: none;
+}
+
+.slider__track {
+  scrollbar-width: none;
+}
+
+.heading{
+  padding: 20px !important;
+}
+
+.features-bubble{
+  top: -25px;
+  right: -200px;
+}
+
+.feature-boxes-1{
+  justify-content: space-between;
+}
+
+.tablet-box-1 {
+  display: none;
+}
+
+.free{
+  justify-content: space-between;
+ }
+
+ .newsletter input{
+  padding: 12px 10px !important;
+  border-radius: 10px !important;
+ }
+
+ .foot-sub{
+  border-radius: 12px !important;
+  border-radius: 10px !important;
+  font-weight: 500;
+ }
+
+ .free {
+  justify-content: center;
+ }
+
+ .invoice-sales{
+  height: 350px !important;
+  object-fit: fill;
+ }
+
+ .foot-sub{
+  width: 100% !important;
+  padding: 10px !important;
+  font-weight: 500 !important; 
+}
+
+
+/* Media */
+@media only screen and (max-width: 1024px) {
+  .benefits-cards{
+    height: auto;
+  }
+  .navbar {
+    padding-top: 20px !important;
+  }
+
+  .navbar-toggler {
+    border-color: #fff !important;
+    background-color: #fff !important;
+  }
+  .slider-container{
+    height: 400px;
+  }
+  .dashboardimg-section{
+    margin-top: -365px;
+    margin-bottom: 50px;
+  }
+  .fix-it-box{
+    padding: 30px;
+  }
+  .features-bubble{
+    display: none;
+  }
+
+  .features-main-img{
+    right: 0px;
+  }
+  .feature-boxes-1{
+    justify-content: start;
+    gap: 18px;
+  }
+  .tablet-box-1{
+    display: block;
+  }
+
+  .tablet-box-2{
+    display: none;
+  }
+
+  .newslider-container{
+    height: 300px;
+  }
+
+  .newslide-image{
+    height: 340px;
+  }
+  .content-creation-box{
+    width: 100%;
+  }
+  .contact-us-btn, .contact-us-btn-2{
+    padding: 11px 20px !important;
+  }
+  .free{
+   justify-content: start;
+   margin-top: 20px !important;
+  }
+  .free-quote-badge{
+    display: none;
+  }
+  .company-links, .product-links, .newsletter{
+    padding: 10px !important;
+  }
+  .footer-main-section{
+    padding: 10px 0px 35px;
+  }
+  .newdots-container{
+    bottom: 90px;
+  }
+  .border-work>h2{
+    font-size: 30px;
+  }
+  .border-work>p{
+    font-size: 20px;
+  }
+  .benefits-bubble{
+    right: -65px;
+  }
+  .slider__track{
+    gap: 13px;
+  }
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .tablet-box-1{
+    display: none;
+  }
+
+  .newdots-container{
+    bottom: -15px;
+  }
+
+  .free{
+    margin-top: 0px !important;
+  }
+
+  .main-titl>h1 {
+    font-size: 36px;
+    padding: 0 !important;
+  }
+
+  .lead {
+    font-size: 21px !important;
+  }
+
+  .main-titl .d-flex {
+    flex-wrap: wrap !important;
+  }
+
+  .dashboardimg-section {
+    margin-top: -360px !important;
+    margin-bottom: 70px;
+  }
+
+  .hero-section-btn-two {
+    padding: 10px 85px !important;
+  }
+
+  .slider-container {
+    height: 190px;
+  }
+
+  .leading-heading, .border-work>h2 {
+    font-size: 32px;
+  }
+
+  .leading-company-logo {
+    width: 180px !important;
+  }
+
+  .leading-company-logo img {
+    width: 100%;
+  }
+
+  .work-broken-section {
+    padding: 40px 0px;
+    margin-top: 40px;
+  }
+
+  .fix-it-box {
+    padding: 30px;
+    margin-top: 25px;
+  }
+
+  .heading-problem-solve {
+    right: inherit;
+    position: unset !important;
+  }
+
+  .problem-parag p:first-child {
+    font-size: 21px !important;
+  }
+
+  .heading.py-5{
+    padding: 0px 0px 20px !important;
+  }
+
+  .problem-para {
+    font-size: 16px !important;
+    margin-top: 0 !important;
+  }
+
+  .problem-main-img, .solving-bubble {
+    display: none;
+  }
+
+  .heading-problem-solve .display-4{
+    font-size: 32px !important;
+    width: 100% !important;
+  }
+
+  .sec-heading h2 {
+    font-size: 32px !important;
+  }
+
+  .benefits-cards {
+    height: auto !important;
+  }
+
+  .industry-title {
+    font-size: 32px;
+  }
+
+  .features-main-img {
+    display: none;
+  }
+
+  .heading h2 {
+    font-size: 31px !important;
+  }
+
+  .whygsaas .heading h2{
+    font-size: 32px !important;
+  }
+
+  .whygsaas .heading h2 br{
+    display: none;
+  }
+
+  .whygsaas .heading h2 span{
+    padding: 0px !important;
+  }
+
+  .heading .feature-section {
+    right: 0px !important;
+  }
+
+  .feature-section p, .border-work>p {
+    font-size: 21px !important;
+  }
+
+  .feature-section p br {
+    display: none;
+  }
+
+  .feature-boxes-section .row {
+    justify-content: center !important;
+    gap: 0px 15px; 
+  }
+
+  .feature-boxes-section-2 {
+    width: 100% !important;
+    flex-wrap: wrap;
+  }
+
+  .random-column {
+    width: 156px !important;
+  }
+
+  .random-column-2 {
+    width: 93% !important;
+  }
+
+  .content-creation-bg {
+    height: 100% !important;
+    background:#f9f9f9 !important;
+    padding-bottom: 50px;
+  }
+
+  .content-creation-box{
+    width: 100%;
+  }
+
+  .content-creation-box div{
+    flex-wrap: wrap;
+  }
+
+  .newslider-container{
+    height: 200px;
+    margin-top: 50px;
+  }
+
+  .newslide-image{
+    height: 222px;
+  }
+
+  .faq-section h2{
+    font-size: 32px !important;
+  }
+
+  .free-quote-badge{
+    display: none;
+  }
+
+  .footer-first-section .d-flex{
+    flex-wrap: wrap !important;
+    justify-content: flex-start !important;
+    margin-top: 10px;
+  }
+
+  .footer-main-section{
+    padding: 0px 0px 50px !important;
+  }
+
+  .company-links, .product-links{
+    padding-left: 15px !important;
+    padding-top: 15px !important;
+  }
+
+  .newsletter{
+    padding-top: 15px;
+  }
+
+  .dots-container, .newdots-container {
+    width: 95% !important;
+  }
+
+  .benefits-cards-title {
+    font-size: 21px !important;
+  }
+
+  .content-creation-box ul li, .content-creation-box p {
+    font-size: 16px !important;
+  }
+  .footer-first-section p{
+    font-size: 18px !important;
+  }
+
+  .footer-first-section .kaushan{
+    font-size: 32px !important;
+  }
+
+  .whygsaas .heading img{
+    display: none;
+  }
+
+  .clients-logos {
+    padding-bottom: 0px !important;
+    border-bottom: none !important;
+  }
+
+  .whygsaas .heading.p-3{
+    padding: 0px !important;
+  }
+
+  .content-creation-bg{
+    padding: 30px 0px !important;
+  }
+
+  .problem-solving-section.py-5{
+    padding-top: 0px !important;
+    padding-bottom: 20px !important;
+  }
+
+  #navbarNav{
+    background: white;
+    padding: 20px;
+  }
+
+  #navbarNav ul li a {
+    color: black !important;
+  }
+
+  #navbarNav .login{
+    margin-top: 20px;
+  }
+
+  #navbarNav .login a:first-child{
+    background-color: #e7e7e7 !important;
+  }
+
+  .features-bubbl{
+    display: none;
+  }
+
+  .supply-chain{
+    width: 60%;
+  }
+  
+}

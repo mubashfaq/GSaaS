@@ -1,0 +1,13 @@
+{
+    "name": "Documents",
+    "alias": "Documents",
+    "description": "",
+    "priority": 307,
+    "version": 1.4,
+    "monthly_price": 0,
+    "yearly_price": 0,
+    "child_module": [
+        "DocumentTemplate"
+    ],
+    "package_name": "documents"
+}

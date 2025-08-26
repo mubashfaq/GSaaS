@@ -1,0 +1,27 @@
+{
+    "name": "workdo/quick-books",
+    "description": "Description for quick-books package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workdo\\QuickBooks\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkDo",
+            "email": "support@workdo.io"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workdo\\QuickBooks\\Providers\\QuickBooksServiceProvider",
+                "Workdo\\QuickBooks\\Providers\\ViewComposer"
+
+            ]
+        }
+    }
+}

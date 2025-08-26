@@ -1,0 +1,6 @@
+.moretext {
+    display: none;
+}
+.moretext.show {
+    display: inline;
+}

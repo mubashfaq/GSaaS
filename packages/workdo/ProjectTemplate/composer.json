@@ -1,0 +1,25 @@
+{
+    "name": "workdo/project-template",
+    "description": "Description for project-template package",
+    "type": "library",
+    "license": "MIT",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Workdo\\ProjectTemplate\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "WorkDo",
+            "email": "support@workdo.io"
+        }
+    ],
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Workdo\\ProjectTemplate\\Providers\\ProjectTemplateServiceProvider"
+            ]
+        }
+    }
+}
