@@ -59,7 +59,7 @@
                                 <div class="col-lg-6 text-end">
                                     <h6 class="d-inline-block m-0 d-print-none">{{ __('Assigned User :') }}</h6>
                                     <span
-                                        class="text-sm">{{ !empty($invoice->assign_user) ? $invoice->assign_user->name : '' }}</span>
+                                        class="text-sm">{{ !empty($invoice->salesOrderRelation->assign_user) ? $invoice->salesOrderRelation->assign_user->name : 'No User' }}</span>
                                 </div>
                             </div>
                             <div class="row mb-5">

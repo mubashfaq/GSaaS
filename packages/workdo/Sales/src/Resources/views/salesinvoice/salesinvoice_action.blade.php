@@ -16,6 +16,13 @@
         </a>
     </div>
 @endpermission
+@permission('salesinvoice show')
+<div class="action-btn me-2">
+    <a href="{{ route('salesinvoice.show',$invoice->id) }}" data-bs-toggle="tooltip" data-original-title="{{__('View')}}" class="mx-3 btn btn-sm align-items-center text-white bg-warning" title="{{__('Invoice Details')}}">
+        <i class="ti ti-eye"></i>
+    </a>
+</div>
+@endpermission
 @permission('salesinvoice edit')
     <div class="action-btn me-2">
         <a href="{{ route('salesinvoice.edit', $invoice->id) }}" data-bs-toggle="tooltip" title="{{ __('Edit') }}"

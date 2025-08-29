@@ -105,7 +105,8 @@
                                         {{$result['name']}}
                                     </td>
                                     <td>
-                                        {{!empty($result['account_name'])?$result['account_name']:'-'}}
+                                            {{-- Display account name instead of ID --}}
+                                            {{ !empty($result['account']) && isset($account[$result['account']]) ? $account[$result['account']] : '-' }}
                                     </td>
                                     <td>
                                         @if ($result->status == 0)

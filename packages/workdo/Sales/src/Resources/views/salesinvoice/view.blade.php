@@ -492,8 +492,10 @@
                             <div class="row align-items-center">
                                 <dt class="col-sm-12"><span class="h6 text-sm mb-0">{{ __('Assigned User') }}</span>
                                 </dt>
-                                <dd class="col-sm-12"><span
-                                        class="text-sm">{{ !empty($invoice->assign_user) ? $invoice->assign_user->name : '' }}</span>
+                                <dd class="col-sm-12"><span class="text-sm"><span>
+                                    {{ !empty($invoice->salesOrderRelation->assign_user) ? $invoice->salesOrderRelation->assign_user->name : 'User Not Found' }}
+                                </span>
+                                
                                 </dd>
 
                                 <dt class="col-sm-12"><span class="h6 text-sm mb-0">{{ __('Created') }}</span></dt>
