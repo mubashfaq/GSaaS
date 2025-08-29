@@ -72,6 +72,12 @@ class SalesInvoice extends Model
         return $this->hasOne('App\Models\User', 'id', 'user_id');
     }
 
+    public function salesOrderRelation()
+{
+    return $this->belongsTo(\Workdo\Sales\Entities\SalesOrder::class, 'salesorder');
+}
+    
+
     public function accounts()
     {
         return $this->hasOne('Workdo\Sales\Entities\SalesAccount', 'id', 'account');

@@ -191,10 +191,11 @@
                 <tbody>
                     <tr>
                         <td>
-                            <h3>{{ __('RETAINER') }}</h3>
+                            <img class="invoice-logo" src="{{ $img }}" alt="">
                         </td>
                         <td class="text-right">
-                            <img class="invoice-logo" src="{{ $img }}" alt="">
+                            <h3 style="text-transform: uppercase; font-size: 40px; font-weight: bold; ">{{ __('RETAINER') }}</h3>
+
                         </td>
 
                     </tr>
@@ -286,7 +287,6 @@
                         </td>
                         <td colspan="2">
                             <div class="view-qrcode" style="margin-top: 0;">
-                                <!--@if ( company_setting('retainer_qr_display') && company_setting('retainer_qr_display') == 'on')-->
                                    @if ( company_setting('retainer_qr_display' ,$retainer->created_by, $retainer->workspace) && company_setting('retainer_qr_display' ,$retainer->created_by, $retainer->workspace) == 'on') 
                                     {!! DNS2D::getBarcodeHTML(route('pay.retainer', Crypt::encrypt($retainer->retainer_id)), 'QRCODE', 2, 2) !!}
                                 @endif

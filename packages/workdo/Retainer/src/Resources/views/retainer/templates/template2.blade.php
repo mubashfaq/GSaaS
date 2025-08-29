@@ -278,7 +278,7 @@
                         </td>
                         <td>
                             <div class="view-qrcode">
-                                @if ( setting('retainer_qr_display') && setting('retainer_qr_display') == 'on')
+                                @if ( company_setting('retainer_qr_display' ,$retainer->created_by, $retainer->workspace) && company_setting('retainer_qr_display' ,$retainer->created_by, $retainer->workspace) == 'on') 
                                     {!! DNS2D::getBarcodeHTML(route('pay.retainer', Crypt::encrypt($retainer->retainer_id)), 'QRCODE', 2, 2) !!}
                                 @endif
                             </div>

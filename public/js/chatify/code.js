@@ -778,7 +778,7 @@ function getSharedPhotos(user_id) {
 function messengerSearch(input) {
  $.ajax({
      url: url + '/search',
-     method: 'GET',
+     method: 'POST',
      data: {'_token': access_token, 'input': input},
      dataType: 'JSON',
      beforeSend: () => {

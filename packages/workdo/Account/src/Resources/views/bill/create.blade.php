@@ -75,6 +75,7 @@
 
 
             var totalItemTaxRate = $(el.find('.itemTaxRate')).val();
+            console.log(totalItemTaxRate);
             var itemTaxPrice = parseFloat((totalItemTaxRate / 100) * (totalItemPrice));
             $(el.find('.itemTaxPrice')).val(itemTaxPrice.toFixed(2));
 
@@ -281,7 +282,7 @@
                             }
                             var itemTaxPrice = 0;
                             if (item.product != null) {
-                                var itemTaxPrice = parseFloat((totalItemTaxRate / 100) * (item.product.sale_price *
+                                var itemTaxPrice = parseFloat((totalItemTaxRate / 100) * (item.product.purchase_price *
                                     1));
                             }
                             $(el.parent().parent().find('.itemTaxPrice')).val(itemTaxPrice.toFixed(2));

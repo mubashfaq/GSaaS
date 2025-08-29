@@ -52,9 +52,8 @@ class SalesOrder extends Model
 
     public function assign_user()
     {
-        return $this->hasOne('App\Models\User', 'id', 'user_id');
+        return $this->belongsTo(\App\Models\User::class, 'user_id', 'id');
     }
-
     public function opportunitys()
     {
         return $this->hasOne('Workdo\Sales\Entities\Opportunities', 'id', 'opportunity');

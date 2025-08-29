@@ -123,43 +123,26 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        if(Auth::user()->isAbleTo('user create'))
+
+    if (Auth::user()->isAbleTo('user create')) {
+
+        // ✅ Validation (always unique email)
+        $validatorArray = [
+            'name'  => 'required|max:120',
+            'email' => 'required|email|max:100|unique:users,email',
+        ];
+
+        if(Auth::user()->type != 'super admin'){
+            $validatorArray['roles'] = 'required|exists:roles,id';
+        }
+
+        $validator = Validator::make($request->all(), $validatorArray);
+
+        if($validator->fails())
         {
-            if(Auth::user()->type != 'super admin'){
-                $canUse=  PlanCheck('User',Auth::user()->id);
-                if($canUse == false)
-                {
-                    return redirect()->back()->with('error','You have maxed out the total number of User allowed on your current plan');
-                }
-            }
-            if(Auth::user()->type == 'super admin')
-            {
-                $validatorArray = [
-                    'name' => 'required|max:120',
-                    'email' => 'required|email|max:100|unique:users,email',
-                ];
-            }
-            else{
+            return redirect()->back()->with('error', $validator->errors()->first())->withInput();
+        }
 
-                $validatorArray = [
-                    'name' => 'required|max:120',
-                    'roles' => 'required|exists:roles,id',
-                    'email' => ['required',
-                                    Rule::unique('users')->where(function ($query) {
-                                    return $query->where('created_by', creatorId())->where('workspace_id',getActiveWorkSpace());
-                                })
-                    ],
-                ];
-            }
-
-            $validator = Validator::make(
-                $request->all(), $validatorArray
-            );
-
-            if($validator->fails())
-            {
-                return redirect()->back()->with('error', $validator->errors()->first());
-            }
             $user['is_enable_login']       = 0;
             if(!empty($request->password_switch) && $request->password_switch == 'on')
             {
@@ -170,7 +153,7 @@ class UserController extends Controller
 
                 if($validator->fails())
                 {
-                    return redirect()->back()->with('error', $validator->errors()->first());
+                    return redirect()->back()->with('error', $validator->errors()->first())->withInput();
                 }
             }
             if($request->input('mobile_no')){
@@ -179,7 +162,7 @@ class UserController extends Controller
                 );
                 if($validator->fails())
                 {
-                    return redirect()->back()->with('error', $validator->errors()->first());
+                    return redirect()->back()->with('error', $validator->errors()->first())->withInput();
                 }
             }
             if(Auth::user()->type == 'super admin')
