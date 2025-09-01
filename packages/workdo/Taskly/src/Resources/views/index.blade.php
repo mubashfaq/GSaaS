@@ -265,50 +265,65 @@
 
         })();
     </script>
-    <script>
-        (function() {
-            var options = {
-                chart: {
-                    height: 157,
-                    type: 'line',
-                    toolbar: {
-                        show: false,
-                    },
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                stroke: {
-                    width: 2,
-                    curve: 'smooth'
-                },
-                series: [
-                    @foreach ($chartData['stages'] as $id => $name)
-                        {
-                            name: "{{ __($name) }}",
-                            data: {!! json_encode($chartData[$id]) !!}
-                        },
-                    @endforeach
-                ],
-                xaxis: {
-                    categories: {!! json_encode($chartData['label']) !!},
-                },
-                colors: {!! json_encode($chartData['color']) !!},
-
-                grid: {
-                    strokeDashArray: 4,
-                },
-                legend: {
+   <script>
+    (function() {
+        // Debug the data first
+        console.log('Chart Data:', {!! json_encode($chartData) !!});
+        console.log('Stages:', {!! json_encode($chartData['stages']) !!});
+        console.log('Labels:', {!! json_encode($chartData['label']) !!});
+        
+        var chartData = {!! json_encode($chartData) !!};
+        
+        // Check if required data exists
+        if (!chartData || !chartData.stages || !chartData.label) {
+            console.error('Missing required chart data');
+            return;
+        }
+        
+        var options = {
+            chart: {
+                height: 157,
+                type: 'line',
+                toolbar: {
                     show: false,
                 },
-                yaxis: {
-                    tickAmount: 5,
-                    min: 1,
-                    max: 40,
-                },
-            };
-            var chart = new ApexCharts(document.querySelector("#task-area-chart"), options);
-            chart.render();
-        })();
-    </script>
+            },
+            dataLabels: {
+                enabled: false
+            },
+            stroke: {
+                width: 2,
+                curve: 'smooth'
+            },
+            series: [
+                @foreach ($chartData['stages'] as $id => $name)
+                    {
+                        name: "{{ __($name) }}",
+                        data: {!! json_encode($chartData[$id] ?? []) !!}
+                    },
+                @endforeach
+            ],
+            xaxis: {
+                categories: {!! json_encode($chartData['label'] ?? []) !!},
+            },
+            colors: {!! json_encode($chartData['color'] ?? ['#000']) !!},
+            grid: {
+                strokeDashArray: 4,
+            },
+            legend: {
+                show: false,
+            },
+            yaxis: {
+                tickAmount: 5,
+                min: 1,
+                max: 40,
+            },
+        };
+        
+        var chart = new ApexCharts(document.querySelector("#task-area-chart"), options);
+        chart.render().catch(function(error) {
+            console.error('Chart render error:', error);
+        });
+    })();
+</script>
 @endpush
