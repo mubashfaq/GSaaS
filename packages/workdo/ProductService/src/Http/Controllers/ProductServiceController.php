@@ -664,29 +664,27 @@ class ProductServiceController extends Controller
 
     public function fileImport(Request $request)
     {
-        if(Auth::user()->isAbleTo('product&service import'))
-        {
+        if (Auth::user()->isAbleTo('product&service import')) {
             session_start();
-
+    
             $error = '';
-
             $html = '';
-
-            if ($request->file->getClientOriginalName() != '') {
+            $temp_data = [];
+    
+            if ($request->file && $request->file->getClientOriginalName() != '') {
                 $file_array = explode(".", $request->file->getClientOriginalName());
-
                 $extension = end($file_array);
+    
                 if ($extension == 'csv') {
                     $file_data = fopen($request->file->getRealPath(), 'r');
-
                     $file_header = fgetcsv($file_data);
+    
                     $html .= '<table class="table table-bordered"><tr>';
-
                     for ($count = 0; $count < count($file_header); $count++) {
                         $html .= '
-                                <th>
-                                    <select name="set_column_data" class="form-control set_column_data" data-column_number="' . $count . '">
-                                    <option value="">Set Count Data</option>
+                            <th>
+                                <select name="set_column_data" class="form-control set_column_data" data-column_number="' . $count . '">
+                                    <option value="">Set Column Data</option>
                                     <option value="name">Name</option>
                                     <option value="sku">SKU</option>
                                     <option value="sale_price">Sale Price</option>
@@ -699,49 +697,47 @@ class ProductServiceController extends Controller
                                     <option value="quantity">Quantity</option>
                                     <option value="stock">Stock Limit</option>
                                     <option value="type">Type</option>
-                                  
-                                    </select>
-                                </th>
-                                ';
-
+                                </select>
+                            </th>';
                     }
                     $html .= '</tr>';
-                    $limit = 0;
+    
                     while (($row = fgetcsv($file_data)) !== false) {
-                        $limit++;
-
                         $html .= '<tr>';
-
+    
                         for ($count = 0; $count < count($row); $count++) {
-                            $html .= '<td>' . $row[$count] . '</td>';
+                            $colValue = $row[$count];
+    
+                            // Force "Quantity" column to show 0 in preview
+                            if (isset($file_header[$count]) && strtolower($file_header[$count]) === 'quantity') {
+                                $colValue = 0;
+                                $row[$count] = 0; // also store 0 in session data
+                            }
+    
+                            $html .= '<td>' . $colValue . '</td>';
                         }
-
+    
                         $html .= '</tr>';
-
                         $temp_data[] = $row;
-
                     }
+    
                     $_SESSION['file_data'] = $temp_data;
                 } else {
                     $error = 'Only <b>.csv</b> file allowed';
                 }
             } else {
-
                 $error = 'Please Select CSV File';
             }
-            $output = array(
-                'error' => $error,
+    
+            return json_encode([
+                'error'  => $error,
                 'output' => $html,
-            );
-
-            return json_encode($output);
+            ]);
+        } else {
+            return redirect()->back()->with('error', 'Permission Denied');
         }
-        else
-        {
-            return redirect()->back()->with('error', 'permission Denied');
-        }
-
     }
+
 
     public function fileImportModal()
     {

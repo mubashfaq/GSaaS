@@ -208,7 +208,7 @@
                                                                 @endif
                                                             </div>
                                                         </td>
-                                                        <td style="white-space: break-spaces;">
+                                                        <td class="text-wrap" style="max-width: 200px;">
                                                             {{ $invoiceitem->description }} </td>
                                                         @php
                                                             $tr_tex = array_key_exists($key, $TaxPrice_array) == true ? $TaxPrice_array[$key] : 0;

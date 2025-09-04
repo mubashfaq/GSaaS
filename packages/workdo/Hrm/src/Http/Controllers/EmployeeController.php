@@ -27,6 +27,7 @@ use Workdo\Hrm\Events\DestroyEmployee;
 use Workdo\Hrm\Events\UpdateEmployee;
 use Illuminate\Validation\Rule;
 use Workdo\Hrm\DataTables\EmployeeDataTable;
+use Illuminate\Support\Facades\Log;
 
 class EmployeeController extends Controller
 {
@@ -752,6 +753,7 @@ class EmployeeController extends Controller
                                     <option value="account_number">Account Number</option>
                                     <option value="bank_name">Bank Name</option>
                                     <option value="bank_identifier_code">Bank Identifier Code</option>
+                                    <option value="branch_location">Branch Location</option>
                                     <option value="tax_payer_id">Tax Payer Id</option>
                                     </select>
                                 </th>
@@ -848,6 +850,14 @@ class EmployeeController extends Controller
 
     public function employeeImportdata(Request $request)
     {
+        Log::info('[EmployeeImport] Start', [
+            'mapped_columns' => [
+                'name' => $request->name,
+                'email' => $request->email,
+                'branch_location' => $request->branch_location,
+            ],
+            'total_rows' => isset($_SESSION['file_data']) ? count($_SESSION['file_data']) : 0,
+        ]);
         if (Auth::user()->isAbleTo('employee import')) {
             session_start();
             $html = '<h3 class="text-danger text-center">Below data is not inserted</h3></br>';
@@ -862,6 +872,13 @@ class EmployeeController extends Controller
 
             $roles = Role::where('created_by', creatorId())->where('name', 'staff')->first();
             foreach ($file_data as $key => $row) {
+                Log::debug('[EmployeeImport] Row data', [
+                    'row_no' => $key + 1,
+                    'name' => $row[$request->name] ?? null,
+                    'email' => $row[$request->email] ?? null,
+                    'branch_location' => $row[$request->branch_location] ?? null,
+                ]);
+                
                 $canUse = PlanCheck('User', Auth::user()->id);
                 if ($canUse == false) {
                     return response()->json([
@@ -907,6 +924,7 @@ class EmployeeController extends Controller
                             'account_number' => $row[$request->account_number],
                             'bank_name' => $row[$request->bank_name],
                             'bank_identifier_code' => $row[$request->bank_identifier_code],
+                            'branch_location' => $row[$request->branch_location],
                             'tax_payer_id' => $row[$request->tax_payer_id],
                             'branch_id' => !empty($branch) ? $branch->id : 0,
                             'department_id' => !empty($department) ? $department->id : 0,
@@ -915,6 +933,12 @@ class EmployeeController extends Controller
                             'workspace' => getActiveWorkSpace(),
                         ]);
                     } catch (\Exception $e) {
+                        Log::error('[EmployeeImport] Failed row', [
+                            'row_no' => $key + 1,
+                            'email' => $row[$request->email] ?? null,
+                            'branch_location' => $row[$request->branch_location] ?? null,
+                            'error' => $e->getMessage(),
+                        ]); 
                         $flag = 1;
                         $html .= '<tr>';
 

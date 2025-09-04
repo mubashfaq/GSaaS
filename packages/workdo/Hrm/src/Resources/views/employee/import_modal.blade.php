@@ -48,7 +48,7 @@
             }
 
             total_selection = Object.keys(column_data).length;
-            if (total_selection == 13) {
+            if (total_selection == 14) {
                 $("#import").removeAttr("disabled");
                 name = column_data.name;
                 dob = column_data.dob;
@@ -62,6 +62,7 @@
                 account_number = column_data.account_number;
                 bank_name = column_data.bank_name;
                 bank_identifier_code = column_data.bank_identifier_code;
+                branch_location = column_data.branch_location;
                 tax_payer_id = column_data.tax_payer_id;
             } else {
                 $('#import').attr('disabled', 'disabled');
@@ -116,6 +117,7 @@
                     account_number: account_number,
                     bank_name: bank_name,
                     bank_identifier_code: bank_identifier_code,
+                    branch_location: branch_location,
                     tax_payer_id: tax_payer_id,
                     branch: branch,
                     department: department,
