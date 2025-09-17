@@ -13,6 +13,7 @@ use Yajra\DataTables\Html\Column;
 use Yajra\DataTables\Html\Editor\Editor;
 use Yajra\DataTables\Html\Editor\Fields;
 use Yajra\DataTables\Services\DataTable;
+use Illuminate\Support\Facades\Log;
 
 class RawMaterialDataTable extends DataTable
 {
@@ -23,17 +24,21 @@ class RawMaterialDataTable extends DataTable
         $dataTable = (new EloquentDataTable($query))
             ->addIndexColumn()
             ->editColumn('collection_center_id', function (RawMaterial $raw_meterial) {
+                Log::info('Collection Center:', ['raw_material_id' => $raw_meterial->id, 'location_name' => $raw_meterial->collectionCenter->location_name ?? null]);
                 return $raw_meterial->collectionCenter->location_name ?? '-';
             })
             ->editColumn('item_id', function (RawMaterial $raw_meterial) {
+                Log::info('Product Service:', ['raw_material_id' => $raw_meterial->id, 'productService' => $raw_meterial->productService]);
                 return $raw_meterial->productService->name . ' (' . $raw_meterial->productService->type . ')' ?? '-';
             });
         if (\Laratrust::hasPermission('raw material edit') || \Laratrust::hasPermission('raw material show') || \Laratrust::hasPermission('raw material delete') || \Laratrust::hasPermission('add stock') || \Laratrust::hasPermission('move stock')) {
             $dataTable->addColumn('action', function (RawMaterial $raw_meterial) {
+                Log::info('Action Column:', ['raw_material_id' => $raw_meterial->id]);
                 return view('beverage-management::raw-material.action', compact('raw_meterial'));
             });
             $rawColumn[] = 'action';
         }
+        Log::info('DataTable columns:', $rawColumn);
         return  $dataTable->rawColumns($rawColumn);
     }
 

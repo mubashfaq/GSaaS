@@ -20,6 +20,7 @@ use Workdo\BeverageManagement\Events\UpdateManufacturing;
 use Workdo\BeverageManagement\Events\DestroyManufacturing;
 use Workdo\BeverageManagement\Events\DestroyPackagingItem;
 use Workdo\BeverageManagement\Entities\CollectionCenterStock;
+use Illuminate\Support\Facades\Log;
 
 class ManufacturingController extends Controller
 {
@@ -54,7 +55,7 @@ class ManufacturingController extends Controller
         if (Auth::user()->isAbleTo('manufacturing create')) {
             $collection_centers = CollectionCenter::where('created_by', creatorId())->where('workspace', getActiveWorkSpace())->where('status', 1)->pluck('location_name', 'id');
              $bil_of_materials = BillOfMaterial::where('created_by', creatorId())->where('workspace', getActiveWorkSpace())->where('status', 0)->get();
-           
+           Log::info($bil_of_materials.'bill of material');
     
         
           // $bil_of_materials = BillOfMaterial::where('created_by', creatorId())->where('workspace', getActiveWorkSpace())->where('status', 1)->get();
@@ -66,6 +67,9 @@ class ManufacturingController extends Controller
             if (module_is_active('ProductService')) {
                 $product = \Workdo\ProductService\Entities\ProductService::where('workspace_id', getActiveWorkSpace())->where('type','product')->get()->pluck('name', 'id');
                 $product_count = $product->count();
+           Log::info($product.'product');
+           Log::info($product_count.'product count');
+
             } else {
                 return redirect()->route('beverage-management::raw-material.index')->with('error', __('Please Enable Product & Service Module'));
             }

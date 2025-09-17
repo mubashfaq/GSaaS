@@ -90,25 +90,51 @@
 @endsection
 <script src="{{ asset('js/jquery.min.js') }}"></script>
 <script>
-    $(document).ready(function() {
-        $('#bill_material').on('change', function() {
-            var bill_material_id = $(this).val();
-            $.ajax({
-                url: "{{ route('bill.material') }}",
-                type: "POST",
-                data: {
+    $(document).ready(function () {
+    console.log("Document ready...");
+
+    $('#bill_material').on('change', function () {
+        var bill_material_id = $(this).val();
+        console.log("bill_material changed, selected ID:", bill_material_id);
+
+        $.ajax({
+            url: "{{ route('bill.material') }}",
+            type: "POST",
+            data: {
+                bill_material_id: bill_material_id,
+                _token: '{{ csrf_token() }}'
+            },
+            dataType: 'json',
+            beforeSend: function () {
+                console.log("Sending AJAX request to {{ route('bill.material') }} with data:", {
                     bill_material_id: bill_material_id,
                     _token: '{{ csrf_token() }}'
-                },
-                dataType: 'json',
-                success: function(result) {
-                    if (result) {
+                });
+            },
+            success: function (result) {
+                console.log("AJAX success, response:", result);
+                if (result) {
+                    if (result.html) {
+                        console.log("Updating .section_div with response HTML...");
                         $('.section_div').html(result.html);
+                    } else {
+                        console.warn("Response received but no 'html' key found:", result);
                     }
+                } else {
+                    console.warn("Empty response received!");
                 }
-            });
+            },
+            error: function (xhr, status, error) {
+                console.error("AJAX Error:", status, error);
+                console.error("Response Text:", xhr.responseText);
+            },
+            complete: function () {
+                console.log("AJAX request completed.");
+            }
         });
     });
+});
+
     $(document).ready(function() {
         $('#quantity').on('change', function() {
             var quantity = $(this).val();

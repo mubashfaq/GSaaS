@@ -28,8 +28,11 @@ class Manufacturing extends Model
 
     public function productService()
     {
-        if (module_is_active('ProductService')) {
-            return $this->hasOne(\Workdo\ProductService\Entities\ProductService::class, 'id', 'item_id');
-        }
+        return $this->belongsTo(
+            \Workdo\ProductService\Entities\ProductService::class,
+            'item_id',  // foreign key in BillOfMaterial
+            'id'        // primary key in ProductService
+        );
     }
+    
 }

@@ -50,24 +50,46 @@ class PackagingController extends Controller
         try {
             $action = $request->action;
             $packaging_id = $request->packaging_id;
-            $raw_material = RawMaterial::where('workspace', getActiveWorkSpace())->where('collection_center_id', $request->collection_center_id)->get('item_id')->toArray();
-            $parts =  \Workdo\ProductService\Entities\ProductService::whereIn('id', $raw_material)->where('type', 'parts')->get('id')->toArray();
-            $raw_materials = RawMaterial::with('productService')->whereIn('item_id', $parts)->get();
+    
+            // Get only item_ids instead of full objects
+            $raw_material_ids = RawMaterial::where('workspace', getActiveWorkSpace())
+                ->where('collection_center_id', $request->collection_center_id)
+                ->pluck('item_id'); // returns Collection of IDs
+    
+            // Get only product ids of type parts
+            $part_ids = \Workdo\ProductService\Entities\ProductService::whereIn('id', $raw_material_ids)
+                ->where('type', 'parts')
+                ->pluck('id'); // returns Collection of IDs
+    
+            // Get raw materials with relationships
+            $raw_materials = RawMaterial::with('productService')
+                ->whereIn('item_id', $part_ids)
+                ->get();
+    
             $packaging_item_summary = [];
             if ($action == 'edit') {
                 $packaging_item_summary = PackagingItems::where('packaging_id', $packaging_id)->get();
             }
-            $returnHTML = view('beverage-management::packaging.section', compact('raw_materials', 'action', 'packaging_item_summary', 'packaging_id'))->render();
-            $response = [
+    
+            $returnHTML = view(
+                'beverage-management::packaging.section',
+                compact('raw_materials', 'action', 'packaging_item_summary', 'packaging_id')
+            )->render();
+    
+            return response()->json([
                 'is_success' => true,
                 'message' => '',
                 'html' => $returnHTML,
-            ];
-            return response()->json($response);
+            ]);
         } catch (\Exception $e) {
-            Log::info(['centerWiseRawMaterial', $e]);
+            Log::error(['centerWiseRawMaterial', $e]);
+            return response()->json([
+                'is_success' => false,
+                'message' => 'Something went wrong.',
+            ], 500);
         }
     }
+    
 
     public function getRawMaterial(Request $request)
     {
