@@ -2,6 +2,7 @@
 <div class="modal-body">
     <div class="row">
         <div class="col-md-6">
+           
             <div class="form-group">
                 {{ Form::label('date', __('Date'),['class'=>'form-label']) }}<x-required></x-required>
                 {{Form::date('date',null,array('class'=>'form-control ','required'=>'required','placeholder'=>'Select Date'))}}
@@ -10,7 +11,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {{ Form::label('amount', __('Amount'),['class'=>'form-label']) }}<x-required></x-required>
-                {{ Form::number('amount', !empty($vendor->debit_note_balance)?$vendor->debit_note_balance:0, array('class' => 'form-control','required'=>'required','step'=>'0.01','min'=>'0','placeholder'=>__('Enter Amount'))) }}
+                {{ Form::number('amount', $billDebitNoteTotal, array('class' => 'form-control','required'=>'required','step'=>'0.01','min'=>'0','placeholder'=>__('Enter Amount'))) }}
             </div>
         </div>
         <div class="col-md-12">

@@ -955,7 +955,7 @@
 
                                                     <tr>
                                                         <td colspan="{{ $colspan }}"></td>
-                                                        <td class="text-right">{{ __('Debit note issued') }}</td>
+                                                        <td class="text-right">{{ __('Credit Note issued') }}</td>
                                                         <td class="text-right"><b>{{ currency_format_with_sym($invoice->invoiceTotalCustomerCreditNote()) }}</b></td>
                                                     </tr>
 

@@ -2,7 +2,6 @@
     $company_settings = getCompanyAllSetting();
 @endphp
 
-
 <div class="pt-0 pb-3 modal-body pos-module px-0" id="printarea">
     <table class="table pos-module-tbl">
         <tbody>
@@ -12,40 +11,10 @@
         <br>
 
         <div class="text-left">
-            <h3>{{ $details['pos_id'] }}</h3>
+            <h3>{{ $details['pos_id'] ?? '' }}</h3>
         </div>
-        <!--<div class="text-left">-->
-        <!--    {{isset($company_settings['company_name']) ? $company_settings['company_name'] : ''}}<br>-->
-        <!--    {{isset($company_settings['company_email']) ? $company_settings['company_email'] : ''}}<br>-->
-        <!--    {{isset($company_settings['company_address']) ? $company_settings['company_address'] : ''}}<br>-->
-        <!--    {{isset($company_settings['company_city']) ? $company_settings['company_city'] : ''}},-->
-        <!--    {{isset($company_settings['company_state']) ? $company_settings['company_state'] : ''}},-->
-        <!--    {{isset($company_settings['company_zipcode']) ? $company_settings['company_zipcode'] : ''}}<br>-->
-        <!--    {{isset($company_settings['company_country']) ? $company_settings['company_country'] : ''}}<br>-->
-        <!--    {{isset($company_settings['company_telephone']) ? $company_settings['company_telephone'] : ''}}<br>-->
-        <!--</div>-->
-        <!--<div class="invoice-to mt-2 product-border" >-->
-        <!--    {!! isset($details['customer']['name']) ? '' : $details['customer']['details'] !!}-->
-        <!--</div><br>-->
-        <!--<div>-->
-        <!--    {!! isset($details['customer']['name']) ? 'Name:  ' . $details['customer']['name'] : '' !!}-->
-        <!--</div>-->
-        <!--<div>-->
-        <!--    {!! isset($details['customer']['address']) ? 'Address:  ' . $details['customer']['address'] : '' !!}-->
-        <!--</div>-->
-        <!--<div>-->
-        <!--    {!! isset($details['customer']['email']) ? 'Email:  ' . $details['customer']['email'] : '' !!}-->
-        <!--</div>-->
-        <!--<div>-->
-        <!--    {!! isset($details['customer']['phone_number']) ? 'Phone:  ' . $details['customer']['phone_number'] : '' !!}-->
-        <!--</div>-->
-        <!--<div>-->
-        <!--    {!! isset($details['date']) ? 'Date of POS:  ' . $details['date'] : '' !!}-->
-        <!--</div>-->
-        <!--<div class="product-border">-->
-        <!--    {!! isset($details['warehouse']['details']) ? 'Warehouse Name:  ' . $details['warehouse']['details'] : '' !!}-->
-        <!--</div>-->
-         <div class="text-left" style="font-size: 12px; line-height: 1.3; color:#000;">
+
+        <div class="text-left" style="font-size: 12px; line-height: 1.3; color:#000;">
             @if(isset($company_settings['company_name']) && !empty($company_settings['company_name']))
                 {{ $company_settings['company_name'] }}<br>
             @endif
@@ -83,7 +52,8 @@
                 {{ $company_settings['company_telephone'] }}<br>
             @endif
         </div>
-         @if(isset($details['customer']['details']) && !isset($details['customer']['name']))
+
+        @if(isset($details['customer']['details']) && !isset($details['customer']['name']))
         <div class="invoice-to mt-2 product-border" style="font-size: 12px; color:#000;">
             {!! $details['customer']['details'] !!}
         </div><br>
@@ -126,88 +96,108 @@
         @endif
         </tbody>
     </table>
-  @if (array_key_exists('data', $sales))
-    <table class="table" style="width: 95%; border-collapse: collapse; font-size: 14px;margin:auto;">
-        <thead>
-            <tr>
-                <th colspan="4" style="border: 1px solid #000; padding: 5px; text-align: center;">
-                    <h5 style="margin: 0;color:#000;"><b>{{ __('Product Details') }}</b></h5>
-                </th>
-            </tr>
-            <tr>
-                <td style="border: 1px solid #000; padding: 5px; font-weight: bold; font-size: 18px;color:#000;">{{ __('Product') }}</td>
-                <td style="border: 1px solid #000; padding: 5px; font-weight: bold; text-align: center; font-size: 18px;color:#000;">{{ __('QTY') }}</td>
-                <td style="border: 1px solid #000; padding: 5px; font-weight: bold; text-align: right; font-size: 18px;color:#000;">{{ __('Price') }}</td>
-                <td style="border: 1px solid #000; padding: 5px; font-weight: bold; text-align: right; font-size: 18px;color:#000;">{{ __('Total') }}</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($sales['data'] as $key => $value)
-                <!-- Product Row -->
-                <tr>
-                    <td style="border: 1px solid #000; padding: 5px; max-width: 150px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
-                        <div style="max-width: 100%; word-wrap: break-word; overflow-wrap: break-word; hyphens: auto;">
-                            <h6>{{ $value['name'] }}</h6>
-                        </div>
-                    </td>
-                    <!--<td style="border: 1px solid #000; padding: 5px;">-->
-                    <!--    <div style="{{ strlen($value['name']) > 20 ? 'word-break: break-word;' : '' }}">-->
-                    <!--     <h6>   {{ $value['name'] }} </h6>-->
-                    <!--    </div>-->
-                    <!--</td>-->
-                    <td style="border: 1px solid #000; padding: 5px; text-align: center;color:#000;"><h6><b>{{ $value['quantity'] }}</b></h6></td>
-                    <td style="border: 1px solid #000; padding: 5px; text-align: right;color:#000;"></h6><b>{{ $value['price'] }}</h6></b></td>
-                    <td style="border: 1px solid #000; padding: 5px; text-align: right;color:#000;"><h6><b>{{ $value['subtotal'] }}</b></h6></td>
-                </tr>
-                
-                
-                <!-- Tax Row -->
-                <tr>
-                    <td colspan="2" style="border: 1px solid #000; padding: 5px; font-weight: bold;font-size: 18px;color:#000;">{{ __('Tax') }}</td>
-                    <td colspan="2" style="border: 1px solid #000; padding: 5px; text-align: right;color:#000;"><h6><b>{{ $value['tax_amount'] }}</b></h6></td>
-                </tr>
-                
-                <!-- Discount Row -->
-                <tr>
-                    <td colspan="2" style="border: 1px solid #000; padding: 5px; font-weight: bold;bold;font-size: 18px;color:#000;">{{ __('Discount') }}</td>
-                    <td colspan="2" style="border: 1px solid #000; padding: 5px; text-align: right;color:#000;"><h6><b>{{ $value['discount'] }}</b></h6></td>
-                </tr>
-                
-                
-                
-                <!-- Item Separator -->
-                @if(!$loop->last)
-                    <tr><td colspan="4" style="border-bottom: 2px dashed #000;"></td></tr>
-                @endif
-            @endforeach
-        </tbody>
-       
-        
-    </table>
-@endif
-    <div class="d-flex mt-4 ">
-        <div><h5 >{{__('Payment Method:')}}</h5></div>
-        <div class="text-end ms-auto"><h5 id="print_payment_type">  </h5></div>
-    </div>
-    <div class="d-flex ">
-        <div><h5 >{{__('Total QTY:')}}</h5></div>
-        <div class="text-end ms-auto"><h5 > {{ $sales['total_qty'] }} </h5></div>
-    </div>
-    <div class="d-flex ">
-        <div><h5 >{{__('Total Tax:')}}</h5></div>
-        <div class="text-end ms-auto"><h5 > {{ $sales['total_tax'] }} </h5></div>
-    </div>
-    <div class="d-flex product-border mb-2 ">
-        <div><h5 >{{__('Discount:')}}</h5></div>
-        <div class="text-end ms-auto"><h5 > {{ $sales['discount'] }} </h5></div>
-    </div>
-    <div class="d-flex product-border mb-2">
-        <div><h4 >{{__('Total:')}}</h4></div>
-        <div class="text-end ms-auto"><h4 > {{ $sales['total'] }} </h4></div>
-    </div>
 
+    {{-- FIXED: Added proper null checks and data validation --}}
+    @if (isset($sales) && is_array($sales) && array_key_exists('data', $sales) && !empty($sales['data']))
+        <table class="table" style="width: 95%; border-collapse: collapse; font-size: 14px;margin:auto;">
+            <thead>
+                <tr>
+                    <th colspan="4" style="border: 1px solid #000; padding: 5px; text-align: center;">
+                        <h5 style="margin: 0;color:#000;"><b>{{ __('Product Details') }}</b></h5>
+                    </tr>
+                    <tr>
+                        <td style="border: 1px solid #000; padding: 5px; font-weight: bold; font-size: 18px;color:#000;">{{ __('Product') }}</td>
+                        <td style="border: 1px solid #000; padding: 5px; font-weight: bold; text-align: center; font-size: 18px;color:#000;">{{ __('QTY') }}</td>
+                        <td style="border: 1px solid #000; padding: 5px; font-weight: bold; text-align: right; font-size: 18px;color:#000;">{{ __('Price') }}</td>
+                        <td style="border: 1px solid #000; padding: 5px; font-weight: bold; text-align: right; font-size: 18px;color:#000;">{{ __('Total') }}</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($sales['data'] as $key => $value)
+                        {{-- FIXED: Added null checks for all fields --}}
+                        <tr>
+                            <td style="border: 1px solid #000; padding: 5px; max-width: 150px; word-wrap: break-word; overflow-wrap: break-word; white-space: normal;">
+                                <div style="max-width: 100%; word-wrap: break-word; overflow-wrap: break-word; hyphens: auto;">
+                                    <h6>{{ $value['name'] ?? 'N/A' }}</h6>
+                                </div>
+                            </td>
+                            <td style="border: 1px solid #000; padding: 5px; text-align: center;color:#000;">
+                                <h6><b>{{ $value['quantity'] ?? '0' }}</b></h6>
+                            </td>
+                            {{-- FIXED: Removed extra </h6> tag --}}
+                            <td style="border: 1px solid #000; padding: 5px; text-align: right;color:#000;">
+                                <h6><b>{{ $value['price'] ?? '0.00' }}</b></h6>
+                            </td>
+                            <td style="border: 1px solid #000; padding: 5px; text-align: right;color:#000;">
+                                <h6><b>{{ $value['subtotal'] ?? '0.00' }}</b></h6>
+                            </td>
+                        </tr>
+                        
+                        {{-- Tax Row --}}
+                        <tr>
+                            <td colspan="2" style="border: 1px solid #000; padding: 5px; font-weight: bold;font-size: 18px;color:#000;">{{ __('Tax') }}</td>
+                            <td colspan="2" style="border: 1px solid #000; padding: 5px; text-align: right;color:#000;">
+                                <h6><b>{{ $value['tax_amount'] ?? '0.00' }}</b></h6>
+                            </td>
+                        </tr>
+                        
+                        {{-- Discount Row --}}
+                        <tr>
+                            <td colspan="2" style="border: 1px solid #000; padding: 5px; font-weight: bold;font-size: 18px;color:#000;">{{ __('Discount') }}</td>
+                            <td colspan="2" style="border: 1px solid #000; padding: 5px; text-align: right;color:#000;">
+                                <h6><b>{{ $value['discount'] ?? '0.00' }}</b></h6>
+                            </td>
+                        </tr>
+                        
+                        {{-- Item Separator --}}
+                        @if(!$loop->last)
+                            <tr><td colspan="4" style="border-bottom: 2px dashed #000;"></td></tr>
+                        @endif
+                    @endforeach
+                </tbody>
+            </table>
+    @else
+        {{-- FIXED: Added fallback when no sales data --}}
+        <div class="text-center" style="padding: 20px; color: #666;">
+            <p>{{ __('No items found') }}</p>
+        </div>
+    @endif
+
+    {{-- FIXED: Added null checks for totals section --}}
+    <div class="d-flex mt-4">
+        <div><h5>{{__('Payment Method:')}}</h5></div>
+        <div class="text-end ms-auto"><h5 id="print_payment_type"></h5></div>
+    </div>
     
+    @if(isset($sales['total_qty']))
+    <div class="d-flex">
+        <div><h5>{{__('Total QTY:')}}</h5></div>
+        <div class="text-end ms-auto"><h5>{{ $sales['total_qty'] }}</h5></div>
+    </div>
+    @endif
+    
+    @if(isset($sales['total_tax']))
+    <div class="d-flex">
+        <div><h5>{{__('Total Tax:')}}</h5></div>
+        <div class="text-end ms-auto"><h5>{{ $sales['total_tax'] }}</h5></div>
+    </div>
+    @endif
+    
+    @if(isset($sales['discount']))
+    <div class="d-flex product-border mb-2">
+        <div><h5>{{__('Discount:')}}</h5></div>
+        <div class="text-end ms-auto"><h5>{{ $sales['discount'] }}</h5></div>
+    </div>
+    @endif
+    
+    @if(isset($sales['total']))
+    <div class="d-flex product-border mb-2">
+        <div><h4>{{__('Total:')}}</h4></div>
+        <div class="text-end ms-auto"><h4>{{ $sales['total'] }}</h4></div>
+    </div>
+    @endif
 </div>
+
 <div class="invoice-footer product-border mb-2">
     @if(!empty($company_settings['pos_footer_title']))
         <h4>{{ $company_settings['pos_footer_title'] }}</h4>
@@ -216,55 +206,51 @@
     @if(!empty($company_settings['pos_footer_notes']))
         <p style="color:#000; white-space: pre-line;">{!! $company_settings['pos_footer_notes'] !!}</p>
     @endif
-
-    
 </div>
 
-   <div class="invoice-footer product-border mb-2" style="text-align: center;">
-    @if(!empty($fbrPosId))
-        <!-- Title centered -->
-        <h6 style="color: #000; font-weight: bold; margin-bottom: 10px;">FBR INVOICE #</h6>
+@if(isset($fbrPosId) && !empty(trim($fbrPosId)))
+<div class="invoice-footer product-border mb-2" style="text-align: center;">
+    <!-- Title centered -->
+    <h6 style="color: #000; font-weight: bold; margin-bottom: 10px;">FBR INVOICE #</h6>
 
-        <!-- Invoice ID centered -->
-        <p style="color: #000; white-space: pre-line; margin-bottom: 20px;">{!! $fbrPosId !!}</p>
+    <!-- Invoice ID centered -->
+    <p style="color: #000; white-space: pre-line; margin-bottom: 20px;">{!! $fbrPosId !!}</p>
 
-        <!-- QR Code and Image Row -->
-        <div style="display: flex; justify-content: space-between; align-items: center; margin: 15px auto; max-width: 500px;">
-            <!-- Left: Logo or other image-->
-            <div style="flex: 1; text-align: left;">
-                
-                <img src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRTtI-xKEXiceE-HbvhRoEAqNv9vzTywE5UvAptAIAFZqa_kDXXZTDfM83LpsehGdv5ww&usqp=CAU') }}" alt="Logo" style="max-width: 100px;">
-            </div>
-
-            <!-- Right: QR Code  -->
-            <div style="flex: 1; text-align: right;">
-                 <div id="qr-code" style="width: 80px; height: 80px; margin: 0 auto;"></div>
-               
-            </div>
+    <!-- QR Code and Image Row -->
+    <div style="display: flex; justify-content: space-between; align-items: center; margin: 15px auto; max-width: 500px;">
+        <!-- Left: Logo or other image-->
+        <div style="flex: 1; text-align: left;">
+            <img src="{{ asset('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRTtI-xKEXiceE-HbvhRoEAqNv9vzTywE5UvAptAIAFZqa_kDXXZTDfM83LpsehGdv5ww&usqp=CAU') }}" alt="Logo" style="max-width: 100px;">
         </div>
 
-        <!-- Footer Note -->
-        <p style="color: #000; white-space: pre-line; font-size: 14px; margin-top: 10px;">
-            Verify this invoice through FBR TaxAsaan MobileApp or SMS at 9966 and win exciting prizes in draw!
-        </p>
-    @endif
+        <!-- Right: QR Code  -->
+        <div style="flex: 1; text-align: right;">
+             <div id="qr-code" style="width: 80px; height: 80px; margin: 0 auto;"></div>
+        </div>
+    </div>
+
+    <!-- Footer Note -->
+    <p style="color: #000; white-space: pre-line; font-size: 14px; margin-top: 10px;">
+        Verify this invoice through FBR TaxAsaan MobileApp or SMS at 9966 and win exciting prizes in draw!
+    </p>
 </div>
+@endif
+
 <div class="justify-content-center pt-2 modal-footer">
-    <h5 class="text-center  font-label" style="width:80%;margin:auto;">
+    <h5 class="text-center font-label" style="width:80%;margin:auto;">
         {{ __('Thank You For Shopping With Us. Please Visit Again.') }}
     </h5>
 
     <h5 class="text-center font-label" style="font-size:14px;">
         Developed by <strong>GSaaS</strong>
     </h5>
-    <br>
-    <br>
-    <a href="#" id="print"
-       class="btn btn-primary btn-sm text-right float-right  "
-       onclick="printReceipt(event)">
+    <br><br>
+    
+    <button type="button" id="print" class="btn btn-primary btn-sm" onclick="printReceipt(event)">
         {{ __('Print') }}
-    </a>
+    </button>
 </div>
+
 <style>
     .pos-module .product-border{
         border-bottom: 5px dotted #000000 !important;
@@ -272,11 +258,7 @@
     .product-border{
         border-bottom: 5px dotted #000000 !important;
     }
-     /*.invoice-footer {*/
-     /*       padding: 15px 20px;*/
-     /*   }*/
 
-    /* Ensure print button is visible */
     #print {
         display: inline-block !important;
         position: relative !important;
@@ -284,13 +266,8 @@
         cursor: pointer !important;
     }
     
-    /* Print styles */
     @media print {
-        #print {
-            display: none !important;
-        }
-        .modal-header,
-        .modal-footer {
+        #print, .modal-header, .modal-footer {
             display: none !important;
         }
         .modal-body {
@@ -306,20 +283,29 @@
         }
     }
     
-    /* Ensure proper button styling */
     .btn-primary {
         background-color: #007bff !important;
         border-color: #007bff !important;
         color: white !important;
+        padding: 8px 16px !important;
+        border-radius: 4px !important;
+        border: none !important;
     }
     
     .btn-primary:hover {
         background-color: #0056b3 !important;
         border-color: #0056b3 !important;
     }
+
+    /* QR Code container styling */
+    #qr-code {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: white;
+    }
 </style>
 
-<!-- Updated JavaScript Section with Robust QR Code Handling -->
 <script>
     // Prevent multiple script executions
     if (window.qrCodeScriptExecuted) {
@@ -727,7 +713,3 @@
     }, 2000);
     } // End of else block for script execution prevention
 </script>
-
-
-
-

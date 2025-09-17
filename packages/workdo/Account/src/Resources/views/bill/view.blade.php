@@ -197,13 +197,14 @@
         @if(\Auth::user()->type=='company')
             @if($bill->status!=0)
                 <div class="col-md-6 d-flex align-items-center justify-content-between justify-content-md-end">
-                    @if(!empty($billPayment) && $vendor->debit_note_balance != 0)
+                    {{-- @dd($vendor->debit_note_balance) --}}
+                    {{-- @if(!empty($billPayment) && $vendor->debit_note_balance != 0) --}}
                         <div class="mx-2 all-button-box">
                             <a href="#" data-url="{{ route('bill.debit.note',$bill->id) }}" data-ajax-popup="true" data-title="{{__('Apply Debit Note')}}" class="btn btn-sm btn-primary">
                                 {{__('Add Debit Note')}}
                             </a>
                         </div>
-                    @endif
+                    {{-- @endif --}}
                     <div class="mx-2 all-button-box">
                         <a href="{{ route('bill.resent',$bill->id) }}" class="btn btn-sm btn-primary">
                             {{__('Resend Bill')}}

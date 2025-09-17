@@ -21,7 +21,7 @@
                                     <option value="">{{ __('Select Raw Material') }}</option>
                                     @foreach ($bil_of_materials as $bil_of_material)
                                         <option value="{{ $bil_of_material->id }}">
-                                            {{ $bil_of_material->productService->name }} - ({{ $bil_of_material->productService->type }})
+                                            {{ $bil_of_material->productService->name ?? 'N/A' }} - ({{ $bil_of_material->productService->type ?? '' }})
                                         </option>
                                     @endforeach
                                 </select>

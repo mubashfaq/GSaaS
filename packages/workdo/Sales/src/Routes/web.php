@@ -48,7 +48,8 @@ Route::middleware(['web'])->group(function () {
                 ],
             ], function (){
             Route::get('contact/grid', [ContactController::class,'grid'])->name('contact.grid');
-            Route::resource('contact', ContactController::class)->except(['create']);
+            Route::resource('contact', ContactController::class)->except(['create,store']);
+            Route::post('contact-store',[ContactController::class,'store'])->name('contact.store');
             Route::get('contact/create/{type}/{id}', [ContactController::class,'create'])->name('contact.create');
         }
         );

@@ -58,29 +58,50 @@ class BillOfMaterialController extends Controller
         try {
             $action = $request->action;
             $bill_material_id = $request->bill_material_id;
-            $raw_material = RawMaterial::where('workspace', getActiveWorkSpace())->where('collection_center_id', $request->collection_center_id)->get('item_id')->toArray();
-          
-            $parts =  \Workdo\ProductService\Entities\ProductService::whereIn('id', $raw_material)->where('type', 'parts')->get('id')->toArray();
-            
-             $raw_materials = RawMaterial::with('productService')->whereIn('item_id', $parts)->where('workspace', getActiveWorkSpace())->where('collection_center_id',$request->collection_center_id)->get();
-            //   $raw_materials = RawMaterial::whereIn('item_id', $parts)->get();
-            
-            
+    
+            // ✅ Use pluck to get a flat array of IDs
+            $raw_material = RawMaterial::where('workspace', getActiveWorkSpace())
+                ->where('collection_center_id', $request->collection_center_id)
+                ->pluck('item_id')
+                ->toArray();
+    
+            $parts = \Workdo\ProductService\Entities\ProductService::whereIn('id', $raw_material)
+                ->where('type', 'parts')
+                ->pluck('id')
+                ->toArray();
+    
+            $raw_materials = RawMaterial::with('productService')
+                ->whereIn('item_id', $parts)
+                ->where('workspace', getActiveWorkSpace())
+                ->where('collection_center_id', $request->collection_center_id)
+                ->get();
+    
             $bill_material_item_summary = [];
             if ($action == 'edit') {
                 $bill_material_item_summary = BillMaterialItem::where('bill_of_material_id', $request->bill_material_id)->get();
             }
+    
             $returnHTML = view('beverage-management::bill-of-material.section', compact('raw_materials', 'action', 'bill_material_item_summary', 'bill_material_id'))->render();
+    
             $response = [
                 'is_success' => true,
                 'message' => '',
                 'html' => $returnHTML,
             ];
+    
+            // Debug logs
+            Log::info('Raw Material count', ['count' => count($raw_material)]);
+            Log::info('Parts count', ['count' => count($parts)]);
+            Log::info('Final raw_materials count', ['count' => $raw_materials->count()]);
+    
             return response()->json($response);
         } catch (\Exception $e) {
-            Log::info(['centerWiseRawMaterial', $e]);
+            Log::error('centerWiseRawMaterial error: '.$e->getMessage());
+            Log::error($e->getTraceAsString());
+            return response()->json(['is_success' => false, 'message' => 'Server error']);
         }
     }
+    
 
     public function getRawMaterial(Request $request)
     {

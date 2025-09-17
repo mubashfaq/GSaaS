@@ -56,6 +56,36 @@
     <link rel="stylesheet" href="{{ asset('assets/fonts/material.css') }}">
 
     <style>
+    @media (min-width:320px) and (max-width:576px){
+        .catgory-btns{
+            height:55px !important;
+        }
+        #categories-listing{
+            position:relative;
+            top:5px;
+        }
+        
+    }
+        .category-scroll {
+          display: flex;
+          flex-wrap: nowrap;
+          overflow-x: auto;
+          gap: 10px;
+          cursor: grab;
+          scrollbar-width: none;
+          -webkit-overflow-scrolling: touch;
+        }
+        .category-scroll::-webkit-scrollbar {
+          display: none;
+        }
+        .category-scroll.dragging {
+          cursor: grabbing !important;
+          user-select: none;
+        }
+
+
+
+
     .default-cart{
         width:70px;
         font-size:5px !important;
@@ -112,7 +142,8 @@
         background: none !important;
     }
     
-     Hide unnecessary elements 
+     /*Hide unnecessary elements */
+ 
     #barcode-test-container, 
     #show-barcode-test,
     .btn-empty,
@@ -120,13 +151,13 @@
         display: none !important;
     }
     
-     Force black text for thermal printing 
+     /*Force black text for thermal printing */
     * {
         color: black !important;
         background: none !important;
     }
     
-     Optimize tables for receipts 
+     /*Optimize tables for receipts */
     table {
         width: 100% !important;
         border-collapse: collapse;
@@ -137,7 +168,7 @@
         text-align: left;
     }
     
-     Remove shadows and colors 
+     /*Remove shadows and colors */
     .card, .shadow, [class*="bg-"] {
         box-shadow: none !important;
         background: none !important;
@@ -654,16 +685,24 @@
                                     <div class="col-sm-6">
                                         <div class="d-flex text-end justify-content-end align-items-center">
                                             <div class="input-group">
-                                                <span class="input-group-text g-1 bg-transparent currency-symbol rounded-start">{{ isset($company_settings['defult_currancy_symbol']) ? $company_settings['defult_currancy_symbol'] : '$' }}</span>
-                                                {{ Form::number('discount', null, ['class' => 'form-control discount rounded-end', 'required' => 'required', 'placeholder' => __('Discount') ,'readonly' => 'readonly']) }}
-                                                {{ Form::hidden('discount_hidden', '', ['id' => 'discount_hidden']) }}
+                                                <span class="input-group-text g-1 bg-transparent currency-symbol rounded-start">{{__('Discount')}}</span>
+                                                {{ Form::number('discount', number_format($bill->discount ?? 0, 2, '.', ''), [
+                                                    'class' => 'form-control discount rounded-end',
+                                                    'required' => 'required',
+                                                    'placeholder' => __('Discount'),
+                                                    'readonly' => 'readonly',
+                                                    'step' => '0.01',
+                                                ]) }}
+                                                
+                                                {{ Form::hidden('discount_hidden', number_format($bill->discount ?? 0, 2, '.', ''), ['id' => 'discount_hidden']) }}
+                                                
                                             </div>
                                         </div>
                                     </div>
                                     <div class="col-sm-6">
                                         <div class="d-flex text-end justify-content-end mb-2">
                                             <h6 class="mb-0 text-dark">{{ __('Sub Total') }} :</h6>
-                                            <h6 class="mb-0 text-gray-800" id="displaytotal">
+                                            <h6 class="mb-0 text-gray-800 totalamount" >
                                                 {{ currency_format_with_sym($total) }}</h6>
                                         </div>
                                         <div class="d-flex align-items-center justify-content-end">
@@ -906,7 +945,8 @@
                             //  window.multiCartManager.refreshCurrentCart();
                             $('#displaytotal').text(data.totalWithoutDiscount);
                             $('.totalamount').text(addCommas(data.product.subtotal));
-                            $('.discount').val(data.product.total_discount);
+                            $('.discount').val(parseFloat(data.product.total_discount).toFixed(2));
+                            console.log(data.product.total_discount);
                             if ('carttotal' in data) {
                                 $.each(data.carttotal, function(key, value) {
                                     $('#product-id-' + value.id + ' .subtotal').text(
@@ -915,7 +955,8 @@
                                 });
                                 $.each(data.carttotal, function(key, value) {
                                     $('.total_discount').text(
-                                        addCommas(value.total_discount));
+                                        addCommas(parseFloat(value.total_discount).toFixed(2))
+                                    );
                                     totalDiscount += value.total_discount;
                                     
                                 });
@@ -2270,7 +2311,7 @@ function showMessage(message, type) {
 // Helper function for currency formatting
 function currency_format_with_sym(amount) {
     // Adjust this according to your currency format
-    return '$' + parseFloat(amount).toFixed(2);
+    return '' + parseFloat(amount).toFixed(2);
 }
 
 
@@ -2958,6 +2999,53 @@ $(document).ready(function() {
         
         console.log('Event handlers attached');
     });
+    </script>
+    
+    
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+          document.querySelectorAll(".category-scroll").forEach((scrollContainer) => {
+            let isDown = false;
+            let startX;
+            let scrollLeft;
+        
+            // Pointer down (mouse/touch/pen sab cover karega)
+            scrollContainer.addEventListener("pointerdown", (e) => {
+              isDown = true;
+              scrollContainer.setPointerCapture(e.pointerId);
+              scrollContainer.classList.add("dragging");
+              startX = e.clientX;
+              scrollLeft = scrollContainer.scrollLeft;
+            });
+        
+            // Pointer move
+            scrollContainer.addEventListener("pointermove", (e) => {
+              if (!isDown) return;
+              e.preventDefault();
+              const x = e.clientX;
+              const walk = (x - startX) * 1.5;
+              scrollContainer.scrollLeft = scrollLeft - walk;
+            });
+        
+            // Pointer up / cancel
+            scrollContainer.addEventListener("pointerup", () => {
+              isDown = false;
+              scrollContainer.classList.remove("dragging");
+            });
+        
+            scrollContainer.addEventListener("pointercancel", () => {
+              isDown = false;
+              scrollContainer.classList.remove("dragging");
+            });
+          });
+        
+          // Disable keyboard scroll
+          window.addEventListener("keydown", function (e) {
+            if (["ArrowLeft", "ArrowRight", " "].includes(e.key)) {
+              e.preventDefault();
+            }
+          });
+        });
     </script>
 
 </body>

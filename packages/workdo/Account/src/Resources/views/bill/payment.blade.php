@@ -10,7 +10,7 @@
         <div class="col-md-6">
             <div class="form-group">
                 {{ Form::label('amount', __('Amount'),['class'=>'form-label']) }}<x-required></x-required>
-                {{ Form::number('amount',$bill->getDue(), array('class' => 'form-control','required'=>'required','min'=>'0','step'=>'0.01')) }}
+                {{ Form::number('amount', number_format($bill->getDue(), 2, '.', ''), ['class' => 'form-control', 'required' => 'required', 'min' => '0', 'step' => '0.01']) }}
             </div>
         </div>
         <div class="col-md-6">

@@ -6,6 +6,7 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Workdo\Account\Entities\AccountUtility;
 use Workdo\Account\Entities\Bill;
 use Workdo\Account\Entities\DebitNote;
@@ -31,12 +32,18 @@ class DebitNoteController extends Controller
         if (Auth::user()->isAbleTo('debitnote create')) {
             $billDue = Bill::where('id', $bill_id)->first();
             $vendor  = Vender::where('user_id', $billDue->user_id)->first();
+    
+            // Get the total customer debit note
+            $billDebitNoteTotal = $billDue->billTotalCustomerDebitNote();
 
-            return view('account::debitNote.create', compact('billDue', 'bill_id','vendor'));
+            Log::info($billDebitNoteTotal);
+    
+            return view('account::debitNote.create', compact('billDue', 'bill_id', 'vendor', 'billDebitNoteTotal'));
         } else {
             return response()->json(['error' => __('Permission denied.')], 401);
         }
     }
+    
 
     /**
      * Store a newly created resource in storage.
@@ -59,10 +66,11 @@ class DebitNoteController extends Controller
                 return redirect()->back()->with('error', $messages->first());
             }
             $billDue = Bill::where('id', $bill_id)->first();
+            $billDebitNoteTotal = $billDue->billTotalCustomerDebitNote();
             $vendor  = Vender::where('user_id', $billDue->user_id)->first();
 
-            if($request->amount > $vendor->debit_note_balance) {
-            return redirect()->back()->with('error', 'Maximum ' .currency_format_with_sym($vendor->debit_note_balance) . ' debit limit of this bill.');
+            if($request->amount > $billDebitNoteTotal) {
+            return redirect()->back()->with('error', 'Maximum ' .currency_format_with_sym($billDebitNoteTotal) . ' debit limit of this bill.');
 
             }
 

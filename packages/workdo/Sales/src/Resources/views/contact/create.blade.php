@@ -1,4 +1,4 @@
-{{ Form::open(['url' => 'contact', 'method' => 'post','class'=>'needs-validation','novalidate', 'enctype' => 'multipart/form-data']) }}
+{{ Form::open(['url' => 'contact-store', 'method' => 'post','class'=>'needs-validation','novalidate', 'enctype' => 'multipart/form-data']) }}
 <div class="modal-body">
     <div class="text-end">
         @if (module_is_active('AIAssistant'))
