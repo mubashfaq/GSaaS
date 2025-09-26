@@ -202,9 +202,9 @@
                 @endif
             @endforeach
 
-            <h2>{{ __('Explore Add-on') }}</h2>
+            {{-- <h2>{{ __('Explore Add-on') }}</h2> --}}
 
-            <div class="col-xl-12">
+            {{-- <div class="col-xl-12">
                 @foreach ($category_wise_add_ons as $key => $category_wise_add_on)
                     <div id="tab-{{ $key }}" class="card add_on_manager">
                         <div class="card-header ">
@@ -238,7 +238,7 @@
                         </div>
                     </div>
                 @endforeach
-            </div>
+            </div> --}}
         </div>
         <!-- [ sample-page ] end -->
     </div>

@@ -92,9 +92,15 @@
                         </div>
                         <div class="form-group">
                             <label class="form-label">{{ __('Referral Code (Optional)') }}</label>
-                            <input id="referral-code" type="number"
-                                class="form-control @error('ref_no') is-invalid @enderror"
-                                name="ref_no" placeholder="Enter Referral Code" autocomplete="off">
+                            <input id="referral-code" 
+       type="number"
+       class="form-control @error('ref_no') is-invalid @enderror"
+       name="ref_no" 
+       placeholder="Enter Referral Code"
+       value="0"
+       onfocus="if(this.value=='0'){this.value='';}"
+       onblur="if(this.value==''){this.value='0';}"
+       autocomplete="off">
                             @error('ref_no')
                                 <span class="error invalid-ref_no text-danger" role="alert">
                                     <strong>{{ $message }}</strong>

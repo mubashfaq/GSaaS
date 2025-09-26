@@ -68,9 +68,7 @@
                                                         <p class="text-muted text-sm mb-0">
                                                             {{ $module->description ?? '' }}
                                                         </p>
-                                                        <!-- TEST_LOCAL -->
-
-                                                        {{-- <a href="{{ route('software.details',$module->alias) }}" target="_new" class="btn  btn-outline-secondary w-100 mt-2">{{ __('View Details')}}</a> --}}
+                                                        <!--<a href="{{ route('software.details',$module->alias) }}" target="_new" class="btn  btn-outline-secondary w-100 mt-2">{{ __('View Details')}}</a>-->
                                                     </div>
                                                 </div>
                                             </div>

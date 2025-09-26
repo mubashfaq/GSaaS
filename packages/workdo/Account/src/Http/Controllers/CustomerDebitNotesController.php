@@ -184,7 +184,7 @@ class CustomerDebitNotesController extends Controller
         {
             $validator = \Validator::make(
                 $request->all(), [
-                                   'bill' => 'required|numeric',
+                                   'bill'   => 'required|numeric|not_in:0',
                                    'amount' => 'required|numeric|gte:0',
                                    'date' => 'required|date_format:Y-m-d',
                                ]

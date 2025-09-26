@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use DB;
 use App\Models\PurchasePayment;
+use App\Models\EmailTemplate;
 use App\Events\CreatePaymentPurchase;
 class PurchaseReturnController extends Controller
 {

@@ -40,7 +40,6 @@
     min-width: 255px;
     /*max-width: 255px;*/
 }
-
 .dash-sidebar .search-container input {
     padding: 8px 10px 8px 30px;
     line-height: 1;
@@ -372,13 +371,11 @@ input[type="color"] {
     overflow: auto;
     outline: none;
 }
-
 .agriculture-list::-webkit-scrollbar,
 .top-10-scroll::-webkit-scrollbar {
     width: 5px;
     height: 5px;
 }
-
 .agriculture-list::-webkit-scrollbar-thumb,
 .top-10-scroll::-webkit-scrollbar-thumb {
     background-color: rgb(149, 164, 225, .5);
@@ -1872,15 +1869,12 @@ div.table-responsive>div.dataTables_wrapper>div.row {
 .card:not(.table-card) .dataTable-top {
     padding: 25px 0 !important;
 }
-
 .table-responsive .dataTable-wrapper {
     display: grid;
 }
-
 .dataTables_wrapper {
     min-width: 905px;
 }
-
 .table-responsive .dataTables_wrapper {
     display: grid;
 }
@@ -3231,15 +3225,13 @@ body::-webkit-scrollbar-thumb {
     .project-detail-card .status-wrp span {
         font-size: 12px;
     }
-
     /***** invoice-detail ******/
-    .invoice .invoice-summary {
+    .invoice .invoice-summary{
         padding: 20px;
     }
-
     .invoice .invoice-summary .invoice-title h3::after,
-    .invoice .invoice-title h2::after {
-        left: -22px;
+    .invoice .invoice-title h2::after{
+        left:-22px;
     }
 
 }
@@ -3460,70 +3452,60 @@ body::-webkit-scrollbar-thumb {
     opacity: 0.2;
     border-radius: 0px 0px 250px 250px;
 }
-
 .theme-1 .appointment-bg::before,
 .theme-1 .invoice .net-salary::before,
 .theme-1 .create-ticket .navbar-collapse.show,
 .theme-1 .create-ticket.auth-v1 .bg-auth-side {
     background: var(--theme1-color);
 }
-
 .theme-2 .appointment-bg::before,
 .theme-2 .invoice .net-salary::before,
 .theme-2 .create-ticket .navbar-collapse.show,
 .theme-2 .create-ticket.auth-v1 .bg-auth-side {
     background: var(--theme2-color);
 }
-
 .theme-3 .appointment-bg::before,
 .theme-3 .invoice .net-salary::before,
 .theme-3 .create-ticket .navbar-collapse.show,
 .theme-3 .create-ticket.auth-v1 .bg-auth-side {
     background: var(--theme3-color);
 }
-
 .theme-4 .appointment-bg::before,
 .theme-4 .invoice .net-salary::before,
 .theme-4 .create-ticket .navbar-collapse.show,
 .theme-4 .create-ticket.auth-v1 .bg-auth-side {
     background: var(--theme4-color);
 }
-
 .theme-5 .appointment-bg::before,
 .theme-5 .invoice .net-salary::before,
 .theme-5 .create-ticket .navbar-collapse.show,
 .theme-5 .create-ticket.auth-v1 .bg-auth-side {
     background: var(--theme5-color);
 }
-
 .theme-6 .appointment-bg::before,
 .theme-6 .invoice .net-salary::before,
 .theme-6 .create-ticket .navbar-collapse.show,
 .theme-6 .create-ticket.auth-v1 .bg-auth-side {
     background: var(--theme6-color);
 }
-
 .theme-7 .appointment-bg::before,
 .theme-7 .invoice .net-salary::before,
 .theme-7 .create-ticket .navbar-collapse.show,
 .theme-7 .create-ticket.auth-v1 .bg-auth-side {
     background: var(--theme7-color);
 }
-
 .theme-8 .appointment-bg::before,
 .theme-8 .invoice .net-salary::before,
 .theme-8 .create-ticket .navbar-collapse.show,
 .theme-8 .create-ticket.auth-v1 .bg-auth-side {
     background: var(--theme8-color);
 }
-
 .theme-9 .appointment-bg::before,
 .theme-9 .invoice .net-salary::before,
 .theme-9 .create-ticket .navbar-collapse.show,
 .theme-9 .create-ticket.auth-v1 .bg-auth-side {
     background: var(--theme9-color);
 }
-
 .theme-10 .appointment-bg::before,
 .theme-10 .invoice .net-salary::before,
 .theme-10 .create-ticket .navbar-collapse.show,
@@ -3534,7 +3516,6 @@ body::-webkit-scrollbar-thumb {
 .create-ticket .auth-content .card {
     overflow: visible !important;
 }
-
 .create-ticket .card .ticket-title,
 .create-ticket .auth-content .card .ticket-title {
     margin: -30px auto 0;
@@ -3582,8 +3563,7 @@ body::-webkit-scrollbar-thumb {
 .create-ticket .auth-content .navbar-brand img {
     max-width: 100px;
 }
-
-.create-ticket .card-body .alert {
+.create-ticket .card-body .alert{
     width: fit-content;
     border-radius: 6px;
 }
@@ -3696,7 +3676,6 @@ body::-webkit-scrollbar-thumb {
 }
 
 @media screen and (max-width:575px) {
-
     .create-ticket .card .ticket-title,
     .create-ticket .auth-content .card .ticket-title {
         min-width: 190px;
@@ -3709,24 +3688,21 @@ body::-webkit-scrollbar-thumb {
 }
 
 /****** payslip  ********/
-.list-none {
+.list-none{
     list-style: none;
 }
-
 .payslip-table tbody tr td,
-.payslip-table tbody tr th {
+.payslip-table tbody tr th{
     width: 200px;
 }
-
-.invoice .net-salary {
+.invoice .net-salary{
     max-width: 300px;
     width: 100%;
     position: relative;
     margin: 0 auto;
     z-index: 1;
 }
-
-.invoice .net-salary::before {
+.invoice .net-salary::before{
     content: '';
     position: absolute;
     top: 0;
@@ -3739,19 +3715,17 @@ body::-webkit-scrollbar-thumb {
     border-radius: 10px;
     z-index: -1;
 }
-
-.invoice .net-salary .invoice-detail-item {
+.invoice .net-salary .invoice-detail-item{
     position: relative;
     z-index: 3;
 }
 
 /***** appointment *****/
-.appointment-bg {
+.appointment-bg{
     position: relative;
     z-index: 1;
 }
-
-.appointment-bg::before {
+.appointment-bg::before{
     content: '';
     position: absolute;
     top: 0;
@@ -3764,67 +3738,54 @@ body::-webkit-scrollbar-thumb {
     border-radius: 50%;
     z-index: -1;
 }
-
-.appointment-bg svg {
+.appointment-bg svg{
     width: 60px;
     height: 60px;
 }
 
-.theme-1 .appointment-bg svg path {
+.theme-1 .appointment-bg svg path{
     fill: var(--theme1-color);
 }
-
-.theme-2 .appointment-bg svg path {
+.theme-2 .appointment-bg svg path{
     fill: var(--theme2-color);
 }
-
-.theme-3 .appointment-bg svg path {
+.theme-3 .appointment-bg svg path{
     fill: var(--theme3-color);
 }
-
-.theme-4 .appointment-bg svg path {
+.theme-4 .appointment-bg svg path{
     fill: var(--theme4-color);
 }
-
-.theme-5 .appointment-bg svg path {
+.theme-5 .appointment-bg svg path{
     fill: var(--theme5-color);
 }
-
-.theme-6 .appointment-bg svg path {
+.theme-6 .appointment-bg svg path{
     fill: var(--theme6-color);
 }
-
-.theme-7 .appointment-bg svg path {
+.theme-7 .appointment-bg svg path{
     fill: var(--theme7-color);
 }
-
-.theme-8 .appointment-bg svg path {
+.theme-8 .appointment-bg svg path{
     fill: var(--theme8-color);
 }
-
-.theme-9 .appointment-bg svg path {
+.theme-9 .appointment-bg svg path{
     fill: var(--theme9-color);
 }
-
-.theme-10 .appointment-bg svg path {
+.theme-10 .appointment-bg svg path{
     fill: var(--theme10-color);
 }
-
-.appointment-image1 {
+.appointment-image1{
     position: absolute;
     top: 50%;
     left: 100px;
     transform: translateY(-50%);
 }
-
-.appointment-image2 {
+.appointment-image2{
     position: absolute;
     top: 20%;
     right: 100px;
     transform: translateY(-20%);
 }
-
-.appointment-image3 {
+.appointment-image3{
     position: absolute;
     right: 100px;
     bottom: 20%;
@@ -3832,112 +3793,92 @@ body::-webkit-scrollbar-thumb {
 
 
 /***** waste-details *****/
-.waste-details strong {
+.waste-details strong{
     max-width: 125px;
     width: 100%;
 }
-
-.waste-details li {
+.waste-details li{
     text-align: left;
 }
-
-.waste-details li:not(:last-of-type) {
+.waste-details li:not(:last-of-type){
     margin-bottom: 10px;
 }
 
 /******work Request  ******/
-.request-image1 {
+.request-image1{
     position: absolute;
     top: 500px;
     left: 100px;
 }
-
-.request-image2 {
+.request-image2{
     position: absolute;
     top: 250px;
     right: 100px;
 }
-
-.request-image3 {
+.request-image3{
     position: absolute;
     right: 100px;
     top: 650px;
 }
-
 /***** travel details *****/
-.travel-wrp p {
+.travel-wrp p{
     max-width: 200px;
     width: 100%;
 }
-
-.travel-wrp li:not(:last-of-type) {
+.travel-wrp li:not(:last-of-type){
     margin-bottom: 10px;
 }
-
 .service-request-wrp .card .card-header h5::after,
-.apply-job-section .card .card-header h5:after {
+.apply-job-section .card .card-header h5:after  {
     left: -15px !important;
 }
-
-.apply-job-section {
+.apply-job-section{
     position: relative;
     z-index: 1;
 }
-
-.apply-job-section .card {
+.apply-job-section .card{
     position: relative;
     z-index: 1;
 }
-
 /***** service-request-wrp  *******/
-.desc-wrp {
+.desc-wrp{
     background-color: #f5f5f5;
 }
-
 /**** agriculture-list *******/
-.agriculture-list {
+.agriculture-list{
     overflow-y: hidden;
 }
-
-.agriculture-list li {
+.agriculture-list li{
     min-width: 135px;
 }
-
-.user-list strong {
+.user-list strong{
     min-width: 150px;
 }
-
-.user-list li:not(:last-of-type) {
+.user-list li:not(:last-of-type){
     margin-bottom: 10px;
 }
 
 
 @media screen and (max-width:991px) {
-
     /**** travel details *****/
     .travel-wrp p {
         max-width: 120px;
     }
 }
-
 @media screen and (max-width:767px) {
     .travel-wrp p {
         max-width: 165px;
     }
 }
-
 @media screen and (max-width:575px) {
-
     /**** travel details *****/
     .travel-wrp p {
         max-width: 100%;
     }
-
     /**** agriculture-list *******/
-    .user-list strong {
+    .user-list strong{
         min-width: 100%;
     }
-
     /***** restaurant order *******/
     .image-fixsize img {
         height: 60px;
@@ -3947,38 +3888,32 @@ body::-webkit-scrollbar-thumb {
 
 /* 18.12 */
 .ui-sortable.course-tabel td:nth-child(2),
-.ui-sortable.course-tabel td:nth-child(3) {
+.ui-sortable.course-tabel td:nth-child(3){
     min-width: 160px !important;
 }
-
-.ui-sortable.course-tabel td:nth-child(1) {
+.ui-sortable.course-tabel td:nth-child(1){
     min-width: 170px !important;
 }
 
 /* appointment popup css start */
-.schedule-info-list .schedule-info-item .schedule-info-left {
+.schedule-info-list .schedule-info-item .schedule-info-left{
     max-width: 117px;
     width: 100%;
 }
-
-.schedule-info-list {
+.schedule-info-list{
     row-gap: 10px;
 }
-
-.schedule-info-list .schedule-info-item .schedule-info-right {
+.schedule-info-list .schedule-info-item .schedule-info-right{
 
     flex: 1;
 }
-
-.schedule-info-list .schedule-info-item {
+.schedule-info-list .schedule-info-item{
     gap: 10px;
 }
-
-.schedule-info-list .schedule-info-item:not(:last-of-type) {
+.schedule-info-list .schedule-info-item:not(:last-of-type){
     margin-bottom: 10px;
 }
-
-.schedule-question-wrapper .schedule-question-item {
+.schedule-question-wrapper .schedule-question-item{
     background-color: #F5F5F5;
     padding: 15px;
     border-radius: 10px;
@@ -3987,18 +3922,16 @@ body::-webkit-scrollbar-thumb {
     -ms-border-radius: 10px;
     -o-border-radius: 10px;
 }
-
-.schedule-question-wrapper .schedule-question-item:not(:last-of-type) {
+.schedule-question-wrapper .schedule-question-item:not(:last-of-type){
     margin-bottom: 15px;
 }
-
-.schedule-question-wrapper .schedule-question-item h6 {
+.schedule-question-wrapper .schedule-question-item h6{
     font-size: 16px;
     position: relative;
 }
 
 @media screen and (max-width:991px) {
-    .schedule-question-wrapper .schedule-question-item h6 {
+    .schedule-question-wrapper .schedule-question-item h6{
         font-size: 14px;
     }
 }
@@ -4007,16 +3940,13 @@ body::-webkit-scrollbar-thumb {
     position: relative;
     margin: 0 0 15px;
 }
-
 .dash-sidebar .search-container i {
     transition: color 0.3s ease;
 }
-
 .dash-sidebar .search-container i {
     position: absolute;
     left: 10px;
     top: 50%;
     transform: translateY(-50%);
 }
-
 /* appointment popup css end */

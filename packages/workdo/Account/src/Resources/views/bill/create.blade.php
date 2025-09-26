@@ -75,7 +75,6 @@
 
 
             var totalItemTaxRate = $(el.find('.itemTaxRate')).val();
-            console.log(totalItemTaxRate);
             var itemTaxPrice = parseFloat((totalItemTaxRate / 100) * (totalItemPrice));
             $(el.find('.itemTaxPrice')).val(itemTaxPrice.toFixed(2));
 

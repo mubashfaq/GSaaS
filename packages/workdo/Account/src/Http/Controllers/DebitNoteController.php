@@ -6,7 +6,6 @@ use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Log;
 use Workdo\Account\Entities\AccountUtility;
 use Workdo\Account\Entities\Bill;
 use Workdo\Account\Entities\DebitNote;
@@ -36,14 +35,12 @@ class DebitNoteController extends Controller
             // Get the total customer debit note
             $billDebitNoteTotal = $billDue->billTotalCustomerDebitNote();
 
-            Log::info($billDebitNoteTotal);
     
             return view('account::debitNote.create', compact('billDue', 'bill_id', 'vendor', 'billDebitNoteTotal'));
         } else {
             return response()->json(['error' => __('Permission denied.')], 401);
         }
     }
-    
 
     /**
      * Store a newly created resource in storage.
@@ -65,7 +62,7 @@ class DebitNoteController extends Controller
 
                 return redirect()->back()->with('error', $messages->first());
             }
-            $billDue = Bill::where('id', $bill_id)->first();
+             $billDue = Bill::where('id', $bill_id)->first();
             $billDebitNoteTotal = $billDue->billTotalCustomerDebitNote();
             $vendor  = Vender::where('user_id', $billDue->user_id)->first();
 
